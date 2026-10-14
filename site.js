@@ -6,8 +6,11 @@
   var row = document.getElementById('row');
   var door = document.getElementById('early');
   var box = document.getElementById('word');
-  var go = document.getElementById('go');
+  var enter = document.getElementById('enter');
+  var nvm = document.getElementById('nvm');
   var way = document.getElementById('in');
+  var asking = box.placeholder;
+  var busy = false;
   if (!row || !window.crypto || !crypto.subtle) return;
 
   function bytes(text) {
@@ -19,12 +22,15 @@
     row.dataset.state = state;
     door.setAttribute('aria-expanded', state === 'soon' ? 'false' : 'true');
     if (state === 'ask') box.focus();
+    // Put away, the line is left as it was found.
+    if (state === 'soon') { box.value = ''; box.placeholder = asking; box.classList.remove('no'); box.blur(); }
   }
-  // The key in the small print opens the box, and puts it away again.
+  // The key in the small print opens the line, and puts it away again.
   door.addEventListener('click', function () {
     if (row.dataset.state === 'open') return;
     show(row.dataset.state === 'soon' ? 'ask' : 'soon');
   });
+  nvm.addEventListener('click', function () { show('soon'); });
 
   function answer(line) {
     box.value = '';
@@ -33,11 +39,14 @@
     box.focus();
   }
   function tryIt() {
+    if (busy) return;
     // A phone capitalises the first letter of anything typed.
     var word = box.value.trim().toLowerCase();
-    if (!word) { answer('Type it first.'); return; }
-    go.disabled = true;
-    go.classList.add('busy');
+    if (!word) { answer('type it first.'); return; }
+    // Read only while it is checked, so the keyboard stays up.
+    busy = true;
+    box.readOnly = true;
+    enter.classList.add('busy');
     crypto.subtle.importKey('raw', new TextEncoder().encode(word), 'PBKDF2', false, ['deriveKey'])
       .then(function (base) {
         return crypto.subtle.deriveKey({ name: 'PBKDF2', salt: bytes(LOCK.salt), iterations: LOCK.rounds, hash: 'SHA-256' },
@@ -50,10 +59,15 @@
         way.href = link;
         show('open');
       })
-      .catch(function () { answer("That's not it."); })
-      .then(function () { go.disabled = false; go.classList.remove('busy'); });
+      .catch(function () { answer("that's not it."); })
+      .then(function () { busy = false; box.readOnly = false; enter.classList.remove('busy'); });
   }
-  go.addEventListener('click', tryIt);
-  box.addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); tryIt(); } });
+  // Pressing Enter leaves the keyboard where it is.
+  enter.addEventListener('mousedown', function (e) { e.preventDefault(); });
+  enter.addEventListener('click', tryIt);
+  box.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') { e.preventDefault(); tryIt(); }
+    if (e.key === 'Escape') { e.preventDefault(); show('soon'); }
+  });
   box.addEventListener('input', function () { box.classList.remove('no'); });
 })();

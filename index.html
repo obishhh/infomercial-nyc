@@ -35,21 +35,26 @@
     </div>
   </div>
 
-  <!-- One line under the bill, and it is always the same height: what is
-       coming, or the box for the password, or the way in. -->
+  <!-- One line under the bill, and it is always the same height: the pips
+       and what is coming, the pips and somewhere to type the password, or
+       the way in. -->
   <div class="row" id="row" data-state="soon">
-    <p class="soon">
+    <div class="line">
       <!-- The app's four pips, coloured in one at a time: a ring until it is
            filled, a disc once it is. -->
       <svg class="pips" viewBox="0 0 85 22" aria-hidden="true">
-        <g filter="url(#c2)" fill="none" stroke="#1B33D6" stroke-width="1.7"><circle class="r1" cx="11" cy="11" r="7.4"/><circle class="r2" cx="32" cy="10.4" r="7.4"/><circle class="r3" cx="53" cy="11.5" r="7.4"/><circle class="r4" cx="74" cy="10.8" r="7.4"/></g>
-        <g filter="url(#c1)" fill="#D92027"><circle class="d1" cx="11" cy="11" r="7.8"/><circle class="d2" cx="32" cy="10.4" r="7.8"/><circle class="d3" cx="53" cy="11.5" r="7.8"/><circle class="d4" cx="74" cy="10.8" r="7.8"/></g>
+        <g class="rings" filter="url(#c2)" fill="none" stroke="#1B33D6" stroke-width="1.7"><circle class="r1" cx="11" cy="11" r="7.4"/><circle class="r2" cx="32" cy="10.4" r="7.4"/><circle class="r3" cx="53" cy="11.5" r="7.4"/><circle class="r4" cx="74" cy="10.8" r="7.4"/></g>
+        <g class="discs" filter="url(#c1)" fill="#D92027"><circle class="d1" cx="11" cy="11" r="7.8"/><circle class="d2" cx="32" cy="10.4" r="7.8"/><circle class="d3" cx="53" cy="11.5" r="7.8"/><circle class="d4" cx="74" cy="10.8" r="7.8"/></g>
       </svg>
-      <span>Coming soon to the App Store</span>
-    </p>
-    <div class="ask">
-      <input class="box" id="word" type="text" placeholder="Password" aria-label="Early access password" autocomplete="off" autocapitalize="none" autocorrect="off" spellcheck="false" enterkeyhint="go">
-      <button class="key" id="go" type="button">Go</button>
+      <!-- The two take the same room, so the pips never move. -->
+      <div class="say">
+        <p class="soon">Coming soon to the App Store</p>
+        <div class="ask">
+          <input class="word" id="word" type="text" placeholder="password here" aria-label="Early access password" autocomplete="off" autocapitalize="none" autocorrect="off" spellcheck="false" enterkeyhint="go">
+          <button class="mini" id="enter" type="button">Enter</button>
+          <button class="mini" id="nvm" type="button" aria-label="Never mind">NVM</button>
+        </div>
+      </div>
     </div>
     <a class="key loud" id="in" href="#">Open TestFlight</a>
   </div>

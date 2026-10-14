@@ -66,17 +66,23 @@ h1, p { margin: 0; }
    between the foot of the bill and the small print. The few points here make
    up for the padding inside the links under it. */
 .row { flex: none; height: 44px; margin-top: 8px; display: grid; place-items: center; }
-.row[data-state="soon"] .ask, .row[data-state="soon"] #in,
-.row[data-state="ask"] .soon, .row[data-state="ask"] #in,
-.row[data-state="open"] .soon, .row[data-state="open"] .ask { display: none; }
+.row[data-state="soon"] #in, .row[data-state="ask"] #in,
+.row[data-state="open"] .line { display: none; }
+/* The words and the password stand in one place, as wide as the words, and
+   only the one that is up is seen. */
+.row[data-state="soon"] .ask, .row[data-state="ask"] .soon { visibility: hidden; }
 
 /* What is coming: the four pips filling in turn, and one line in small
    capitals in the colour of a mark. Nothing travels. Each pip is a ring, then
    a disc, at once. */
 .defs { position: absolute; }
-.soon { display: flex; align-items: center; gap: 10px; color: var(--red); }
-.soon span { font-weight: 700; font-size: 12px; line-height: 1; letter-spacing: .14em; text-transform: uppercase; white-space: nowrap; }
+.line { display: flex; align-items: center; gap: 10px; }
+.say { display: grid; align-items: center; }
+.say > * { grid-area: 1 / 1; }
+.soon { color: var(--red); font-weight: 700; font-size: 12px; line-height: 1; letter-spacing: .14em; text-transform: uppercase; white-space: nowrap; }
 .pips { display: block; flex: none; width: 68px; height: 17.6px; overflow: visible; }
+/* Asked for the password, the pips fill in blue. */
+.row[data-state="ask"] .discs { fill: var(--blue); }
 .pips .d1 { animation: fill1 3s step-end infinite; } .pips .r1 { animation: ring1 3s step-end infinite; }
 .pips .d2 { animation: fill2 3s step-end infinite; } .pips .r2 { animation: ring2 3s step-end infinite; }
 .pips .d3 { animation: fill3 3s step-end infinite; } .pips .r3 { animation: ring3 3s step-end infinite; }
@@ -90,17 +96,21 @@ h1, p { margin: 0; }
 @keyframes fill4 { 0% { opacity: 0; } 66.68%, 100% { opacity: 1; } }
 @keyframes ring4 { 0% { opacity: 1; } 66.68%, 100% { opacity: 0; } }
 
-/* Somewhere to type is an outline on the paper, and so is a key. A key that
-   goes down is inverted, at once. */
-.ask { display: flex; gap: 8px; }
-.box { width: 168px; height: 44px; padding: 0 12px; border: 2px solid var(--blue); border-radius: 0; background: var(--paper); color: var(--ink); font: 400 16px/1 "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-appearance: none; appearance: none; }
-.box::placeholder { color: var(--soft); opacity: 1; }
-.box.no::placeholder { color: var(--red); }
-.box:focus { outline: none; box-shadow: inset 0 0 0 1px var(--blue); }
+/* Somewhere to type is a line ruled on the paper, in the words where the
+   words were. Sixteen points, or a phone zooms in on it. */
+.ask { display: flex; align-items: baseline; min-width: 0; }
+/* The line takes whatever the two keys leave. */
+.word { flex: 1; width: 0; min-width: 0; margin-right: 8px; height: 30px; padding: 0 1px; border: 0; border-bottom: 2px solid var(--blue); border-radius: 0; background: none; color: var(--blue); caret-color: var(--blue); font: 300 16px/1 "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-appearance: none; appearance: none; }
+.word::placeholder { color: var(--blue); opacity: 1; }
+.word.no::placeholder { color: var(--red); }
+.word:focus { outline: none; }
+/* Enter, and never mind: back to what is coming. A key that goes down is
+   inverted, and stays down while the password is checked. */
+.mini { flex: none; padding: 8px 6px; border: 0; border-radius: 0; background: none; color: var(--blue); font: 700 12px/1 "Helvetica Neue", Helvetica, Arial, sans-serif; letter-spacing: .14em; text-transform: uppercase; cursor: pointer; -webkit-appearance: none; appearance: none; }
+.mini:last-child { margin-right: -6px; }
+.mini:hover, .mini:active, .mini.busy { background: var(--blue); color: #fff; }
 .key { display: inline-flex; align-items: center; justify-content: center; height: 44px; padding: 0 18px; border: 2px solid var(--blue); border-radius: 0; background: var(--paper); color: var(--blue); font: 700 16px/1 "Helvetica Neue", Helvetica, Arial, sans-serif; text-decoration: none; white-space: nowrap; cursor: pointer; -webkit-appearance: none; appearance: none; }
 .key:hover, .key:active { background: var(--blue); color: #fff; }
-/* Busy, it stays down. */
-.key.busy { background: var(--blue); color: #fff; }
 /* The way in is the one loud key. */
 .key.loud { background: var(--blue); color: var(--yellow); font-weight: 800; font-style: italic; text-shadow: 2px 2px 0 var(--shade); padding: 0 22px; }
 .key.loud:hover, .key.loud:active { background: var(--yellow); border-color: var(--yellow); color: var(--blue); text-shadow: none; }
@@ -122,5 +132,5 @@ h1, p { margin: 0; }
 /* For somebody who asked that nothing move, all four are filled. */
 @media (prefers-reduced-motion: reduce) {
   .pips circle { animation: none; }
-  .pips g:first-child circle { opacity: 0; }
+  .pips .rings circle { opacity: 0; }
 }
