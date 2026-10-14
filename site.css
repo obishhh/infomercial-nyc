@@ -31,16 +31,53 @@ h1, p { margin: 0; }
 .osd { font-family: "VT323", ui-monospace, monospace; line-height: 1; letter-spacing: .04em; text-transform: uppercase; white-space: nowrap; }
 .voice { font-family: "Libre Caslon Text", Georgia, serif; font-style: italic; }
 
-/* The wall measures the room, and the bill is cut to fit it: four wide to
-   five tall, as big as the room allows either way. */
+[hidden] { display: none !important; }
+
+/* The wall measures the room, and the bills are cut to fit it: four wide to
+   five tall, as big as the room allows either way. On a phone the keys that
+   change them stand under the bill, in room kept for them; wider, they stand
+   either side of it. */
 .wall { width: 100%; min-height: 0; container-type: size; display: flex; flex-direction: column; align-items: center; justify-content: space-evenly; }
+.stage {
+  position: relative;
+  /* The room, less the keys and the line that stand under it. */
+  flex: none; height: min(96cqh - 136px, 93cqw * 1.25); aspect-ratio: 4 / 5; margin-bottom: 50px;
+}
+@media (min-width: 600px) {
+  .wall { --g: 64px; }
+  .stage { height: min(96cqh - 86px, (100cqw - 2 * var(--g)) * 1.25); margin-bottom: 0; }
+}
+/* One slot for each poster, all in the one place. Only the one that is up is
+   there, and the one coming on while it slides. */
+.slot { position: absolute; inset: 0; }
 .bill {
-  position: relative; container-type: inline-size;
-  /* The room, less the line that stands under it. */
-  flex: none; height: min(96cqh - 86px, 93cqw * 1.25); aspect-ratio: 4 / 5;
+  position: absolute; inset: 0; container-type: inline-size;
   background: var(--blue); color: #fff;
-  transform: rotate(-1.1deg);
   box-shadow: 0 1px 2px rgba(14, 20, 64, .18), 0 14px 30px rgba(14, 20, 64, .13);
+}
+/* Each was put up by hand, a little off straight its own way. */
+.t1 { transform: rotate(-1.1deg); } .t2 { transform: rotate(.8deg); }
+.t3 { transform: rotate(-.6deg); }  .t4 { transform: rotate(1.2deg); }
+.t5 { transform: rotate(-1.4deg); } .t6 { transform: rotate(.5deg); }
+.t7 { transform: rotate(-.9deg); }  .t8 { transform: rotate(1deg); }
+/* A printed one is its picture, edge to edge, on paper until it has come. */
+.bill.pic { background: #ECE9DF; }
+.bill.pic img { position: absolute; inset: 0; display: block; width: 100%; height: 100%; }
+
+/* The keys: a chevron in the blue, inverted while it is down. On a phone the
+   two stand side by side under the bill. */
+.chev { position: absolute; top: calc(100% + 20px); width: 44px; height: 36px; padding: 0; border: 0; border-radius: 0; background: none; color: var(--blue); display: grid; place-items: center; cursor: pointer; -webkit-appearance: none; appearance: none; -webkit-tap-highlight-color: transparent; }
+.chev svg { width: 10px; height: 18px; overflow: visible; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: square; }
+.chev.prev { right: calc(50% + 4px); }
+.chev.next { left: calc(50% + 4px); }
+.chev:active { background: var(--blue); color: #fff; }
+@media (hover: hover) { .chev:hover { background: var(--blue); color: #fff; } }
+/* Wider, either side of it, half way down. */
+@media (min-width: 600px) {
+  .chev { top: 50%; width: 36px; height: 56px; margin-top: -28px; }
+  .chev svg { width: 12px; height: 22px; }
+  .chev.prev { right: auto; left: calc(-4px - var(--g)); }
+  .chev.next { left: auto; right: calc(-4px - var(--g)); }
 }
 /* Everything printed on the bill is sized off the bill's own width, so it
    is the same bill at any size. */

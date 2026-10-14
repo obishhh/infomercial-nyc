@@ -24,16 +24,47 @@
 <!-- One page, one screen: a bill posted on the paper, what is coming, and
      the small print. Nothing scrolls. -->
 <main class="wall">
-  <div class="bill">
-    <i class="tape a" aria-hidden="true"></i>
-    <i class="tape b" aria-hidden="true"></i>
-    <div class="sheet">
-      <p class="osd notice">Notice &middot; New York, N.Y.</p>
-      <h1 class="tall"><span>Post no</span><span>spoilers</span></h1>
-      <p class="voice">Watch at your own pace.<br>The group chat can't hurt you here.</p>
-      <p class="osd name">infomercial.nyc</p>
+  <!-- The launch posters, one up at a time, each its own bill on the wall.
+       Two keys slide the next one on, round and round. -->
+  <section class="stage" id="stage" aria-roledescription="carousel" aria-label="Launch posters" aria-live="polite">
+    <div class="slot" aria-roledescription="slide" aria-label="Poster 1 of 8">
+      <div class="bill t1">
+        <i class="tape a" aria-hidden="true"></i>
+        <i class="tape b" aria-hidden="true"></i>
+        <div class="sheet">
+          <p class="osd notice">Notice &middot; New York, N.Y.</p>
+          <h1 class="tall"><span>Post no</span><span>spoilers</span></h1>
+          <p class="voice">Watch at your own pace.<br>The group chat can't hurt you here.</p>
+          <p class="osd name">infomercial.nyc</p>
+        </div>
+      </div>
     </div>
-  </div>
+    <div class="slot" aria-roledescription="slide" aria-label="Poster 2 of 8" hidden>
+      <div class="bill pic t2"><img data-src="posters/boroughs.webp" width="1080" height="1350" alt="Not to scale. The five boroughs drawn in blocks, each on a different episode: the Bronx on S4E1, Manhattan on S3E8, Queens on S1E9, Brooklyn on S2E5, Staten Island on S1E1. Nobody's on the same episode. How far are you up to? infomercial.nyc"><i class="tape a" aria-hidden="true"></i><i class="tape b" aria-hidden="true"></i></div>
+    </div>
+    <div class="slot" aria-roledescription="slide" aria-label="Poster 3 of 8" hidden>
+      <div class="bill pic t3"><img data-src="posters/happened.webp" width="1080" height="1350" alt="Has this ever happened to you? Sunday 9:02 PM, the group chat. Are you caught up? No, on episode 5, don't say anything. OK OK OK. Wait so when she dies in episode 8. Infomercial, over the colour bars. There's got to be a better way. infomercial.nyc"><i class="tape a" aria-hidden="true"></i><i class="tape b" aria-hidden="true"></i></div>
+    </div>
+    <div class="slot" aria-roledescription="slide" aria-label="Poster 4 of 8" hidden>
+      <div class="bill pic t4"><img data-src="posters/tile.webp" width="1080" height="1350" alt="Episode 5, set in subway tile. Get off at your stop. The finale isn't going anywhere. infomercial.nyc"><i class="tape a" aria-hidden="true"></i><i class="tape b" aria-hidden="true"></i></div>
+    </div>
+    <div class="slot" aria-roledescription="slide" aria-label="Poster 5 of 8" hidden>
+      <div class="bill pic t5"><img data-src="posters/wait.webp" width="1080" height="1350" alt="The angel on Bethesda Fountain in Central Park, shown up to the sixth of ten blocks, with the rest as snow. Worth the wait. You'll see the rest when you get there. infomercial.nyc"><i class="tape a" aria-hidden="true"></i><i class="tape b" aria-hidden="true"></i></div>
+    </div>
+    <div class="slot" aria-roledescription="slide" aria-label="Poster 6 of 8" hidden>
+      <div class="bill pic t6"><img data-src="posters/premiere.webp" width="1080" height="1350" alt="Listings. 7:00 and 7:30 to be announced. 8:00 Infomercial, new, series premiere: everything you're watching, and everybody you know watching it. Nobody gets spoiled. 9:00 and 9:30 to be announced. Series premiere. Soon. infomercial.nyc"><i class="tape a" aria-hidden="true"></i><i class="tape b" aria-hidden="true"></i></div>
+    </div>
+    <div class="slot" aria-roledescription="slide" aria-label="Poster 7 of 8" hidden>
+      <div class="bill pic t7"><img data-src="posters/stops.webp" width="1080" height="1350" alt="Season 2 Local, all stops. You are here, at episode 5, and three friends at episode 8. Your friends are three stops ahead. Nobody's saying a word. Making all stops. infomercial.nyc"><i class="tape a" aria-hidden="true"></i><i class="tape b" aria-hidden="true"></i></div>
+    </div>
+    <div class="slot" aria-roledescription="slide" aria-label="Poster 8 of 8" hidden>
+      <div class="bill pic t8"><img data-src="posters/coming-up.webp" width="1080" height="1350" alt="A fire escape on a brick building, printed in yellow. Coming up. infomercial.nyc"><i class="tape a" aria-hidden="true"></i><i class="tape b" aria-hidden="true"></i></div>
+    </div>
+    <!-- The two keys that change it: either side of it, or under it on a
+         phone. -->
+    <button class="chev prev" id="prev" type="button" aria-label="Previous poster" hidden><svg viewBox="0 0 12 22" aria-hidden="true"><polyline points="10,2 2,11 10,20"/></svg></button>
+    <button class="chev next" id="next" type="button" aria-label="Next poster" hidden><svg viewBox="0 0 12 22" aria-hidden="true"><polyline points="2,2 10,11 2,20"/></svg></button>
+  </section>
 
   <!-- One line under the bill, and it is always the same height: the pips
        and what is coming, the pips and somewhere to type the password, or
@@ -71,5 +102,6 @@
 </nav>
 
 <script src="site.js"></script>
+<script src="posters.js"></script>
 </body>
 </html>
