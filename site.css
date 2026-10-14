@@ -8,7 +8,7 @@
 :root {
   color-scheme: light;
   --paper: #FBFAF5; --ink: #0E1440; --soft: rgba(14, 20, 64, .62);
-  --blue: #1B33D6; --deep: #0A1166; --yellow: #FFD92E; --red: #D92027; --shade: #05093A; --tape: rgba(236, 226, 190, .86);
+  --blue: #1B33D6; --yellow: #FFD92E; --red: #D92027; --shade: #05093A; --tape: rgba(236, 226, 190, .86);
   --hair: rgba(27, 51, 214, .28);
 }
 
@@ -60,14 +60,6 @@ h1, p { margin: 0; }
 .t3 { transform: rotate(-.6deg); }  .t4 { transform: rotate(1.2deg); }
 .t5 { transform: rotate(-1.4deg); } .t6 { transform: rotate(.5deg); }
 .t7 { transform: rotate(-.9deg); }  .t8 { transform: rotate(1deg); }
-/* The page that is not there: one bill on its own, with nothing under it to
-   make room for, on a screen with no picture. */
-.stage.alone { margin-bottom: 0; height: min(96cqh - 86px, 93cqw * 1.25); }
-.bill.dead { background: var(--deep); }
-/* "This channel" set to the measure, as "Spoilers" is. "Nothing on" is too
-   much shorter to be spread to it, so it stands flush left. */
-.bill h1.small { font-size: 21.8cqw; }
-.bill h1.small span:first-child { text-align: left; text-align-last: auto; }
 /* A printed one is its picture, edge to edge, on paper until it has come. */
 .bill.pic { background: #ECE9DF; }
 .bill.pic img { position: absolute; inset: 0; display: block; width: 100%; height: 100%; }

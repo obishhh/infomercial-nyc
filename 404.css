@@ -1,0 +1,23 @@
+/* A page that is not there: one line in the middle of the paper, and the
+   way back. */
+
+:root { color-scheme: light; --paper: #FBFAF5; --blue: #1B33D6; }
+
+* { box-sizing: border-box; }
+html, body { height: 100%; margin: 0; background: var(--paper); }
+body {
+  min-height: 100dvh; display: grid; place-items: center; padding: 16px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+main { display: flex; flex-direction: column; align-items: center; gap: 18px; text-align: center; }
+
+/* The set saying so, in its blue, in small capitals. */
+h1 { margin: 0; color: var(--blue); font-weight: 700; font-size: 13px; line-height: 1; letter-spacing: .14em; text-transform: uppercase; }
+
+/* A key on the paper: an outline, inverted while it is down. */
+a { display: inline-flex; align-items: center; height: 36px; padding: 0 14px; border: 2px solid var(--blue); background: var(--paper); color: var(--blue); font: 700 14px/1 "Helvetica Neue", Helvetica, Arial, sans-serif; text-decoration: none; white-space: nowrap; }
+a:hover, a:active { background: var(--blue); color: #fff; }
+a:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
+
+@media (min-width: 860px) { h1 { font-size: 14px; } }
