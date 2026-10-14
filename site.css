@@ -1,0 +1,214 @@
+/* Infomercial's front page. The app's look, on a wider sheet of the same
+   paper: six roles of colour, four voices, three shapes, nothing raised.
+   Every value here is one of the app's (Palette, Space, Typography). */
+
+@font-face { font-family: "League Gothic"; src: url("fonts/LeagueGothic.ttf") format("truetype"); font-display: swap; }
+@font-face { font-family: "VT323"; src: url("fonts/VT323-Regular.ttf") format("truetype"); font-display: swap; }
+@font-face { font-family: "Libre Caslon Text"; font-style: italic; src: url("fonts/LibreCaslonText-Italic.ttf") format("truetype"); font-display: swap; }
+
+:root {
+  /* The page follows the paper, never the device. */
+  color-scheme: light;
+
+  --paper: #FBFAF5; --ink: #0E1440; --soft: rgba(14, 20, 64, .62);
+  --blue: #1B33D6; --deep: #0A1166; --yellow: #FFD92E; --red: #D92027;
+  --shade: #05093A; --hair: rgba(27, 51, 214, .22);
+  --purple: #8C1FEB; --orange: #FF6A00;
+
+  /* One scale of gaps. */
+  --s1: 4px; --s2: 8px; --s3: 12px; --s4: 16px; --s5: 24px; --s6: 40px;
+  /* The margin and the gutter. */
+  --m: 20px; --g: 12px;
+  --tube: 18px / 22px;
+
+  /* The set's face is drawn on a grid, and one square of it is 0.08 of its
+     size. These are the sizes where a square is a whole number of pixels on
+     a screen that packs two to a point. */
+  --osd: 18.75px; --osd-m: 25px; --osd-l: 37.5px;
+}
+/* A phone packs three, and these are the app's own three sizes. */
+@media (min-resolution: 3dppx) {
+  :root { --osd: 16.67px; --osd-m: 20.83px; --osd-l: 33.33px; }
+}
+@media (min-width: 860px) {
+  :root { --m: 40px; --g: 16px; }
+}
+
+* { box-sizing: border-box; }
+html { background: var(--paper); -webkit-text-size-adjust: 100%; overflow-x: clip; }
+body {
+  margin: 0; background: var(--paper); color: var(--ink); overflow-x: clip;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 16px; line-height: 22px;
+  -webkit-font-smoothing: antialiased;
+}
+/* Picked is inverted, everywhere. */
+::selection { background: var(--blue); color: #fff; }
+h1, h2, p { margin: 0; }
+a { color: inherit; text-decoration: none; }
+:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
+
+.wrap { max-width: 1200px; margin: 0 auto; padding: 0 var(--m); }
+[hidden] { display: none !important; }
+.defs { position: absolute; }
+
+/* ---- The four voices ---- */
+.tall { font-family: "League Gothic", Impact, sans-serif; font-weight: 400; line-height: .92; text-transform: uppercase; color: var(--blue); }
+.osd { font-family: "VT323", ui-monospace, monospace; font-size: var(--osd); line-height: 1; letter-spacing: .04em; text-transform: uppercase; color: var(--blue); white-space: nowrap; }
+.osd.m { font-size: var(--osd-m); }
+.osd.r { color: var(--red); } .osd.w { color: #fff; } .osd.y { color: var(--yellow); } .osd.q { color: var(--soft); }
+.osd.dim { opacity: .7; }
+.voice { font-family: "Libre Caslon Text", Georgia, serif; font-style: italic; font-size: 20px; line-height: 26px; color: var(--blue); }
+.who { font-weight: 700; font-size: 15px; line-height: 20px; color: var(--blue); }
+.quiet { font-size: 14px; line-height: 20px; color: var(--soft); }
+
+/* ---- The masthead: the bars, and the name across every one of them ---- */
+.mast { position: relative; isolation: isolate; }
+.bars { position: absolute; inset: 0; display: flex; }
+.bars i { flex: 1; display: block; }
+.bars i:nth-child(1) { background: #C0C0C0; } .bars i:nth-child(2) { background: #C0C000; }
+.bars i:nth-child(3) { background: #00C0C0; } .bars i:nth-child(4) { background: #00C000; }
+.bars i:nth-child(5) { background: #C000C0; } .bars i:nth-child(6) { background: #C00000; }
+.bars i:nth-child(7) { background: #0000C0; }
+/* One white word, drawn as the difference of what is under it. The drawing
+   is the band's own height, so the band is as tall as the word makes it. */
+.mast .wrap { padding: 0 12px; }
+.word { display: block; width: 100%; height: auto; fill: #fff; mix-blend-mode: difference; }
+@media (min-width: 860px) { .mast .wrap { padding: 0 var(--m); } }
+
+/* ---- The front of the page ---- */
+.front { position: relative; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); column-gap: var(--g); padding-top: var(--s5); }
+.pitch, .demo { grid-column: 1 / -1; }
+/* The question's size, and the room over it: the sticker is set from both. */
+.pitch { position: relative; --q: clamp(60px, 20.5vw, 150px); --lead: calc(var(--osd) + var(--s4)); --k: 1.25; }
+.pitch .osd.r { display: block; }
+.question { font-size: var(--q); margin: var(--s4) 0 0; text-wrap: balance; }
+.pitch .voice { margin-top: var(--s4); max-width: 22em; }
+.pitch .what { margin-top: var(--s3); max-width: 31em; }
+.pitch .quiet { margin-top: var(--s3); }
+.demo { margin-top: var(--s6); }
+
+@media (min-width: 860px) {
+  .front { grid-template-columns: repeat(12, minmax(0, 1fr)); padding-top: var(--s6); }
+  .pitch { grid-column: 1 / span 7; }
+  .demo { grid-column: 9 / span 4; margin-top: 0; }
+  .pitch { --q: clamp(96px, 11.6vw, 150px); --lead: calc(var(--osd) + var(--s5)); --k: 1.1; }
+  .question { margin-top: var(--s5); }
+  .pitch .voice { font-size: 26px; line-height: 33px; margin-top: var(--s5); }
+  .pitch .what { font-size: 17px; line-height: 25px; margin-top: var(--s4); }
+}
+
+/* ---- A sticker: the one thing that tilts ---- */
+.burst { clip-path: polygon(50% 0, 59.6% 14.3%, 75% 6.7%, 76.2% 23.8%, 93.3% 25%, 85.7% 40.4%, 100% 50%, 85.7% 59.6%, 93.3% 75%, 76.2% 76.2%, 75% 93.3%, 59.6% 85.7%, 50% 100%, 40.4% 85.7%, 25% 93.3%, 23.8% 76.2%, 6.7% 75%, 14.3% 59.6%, 0 50%, 14.3% 40.4%, 6.7% 25%, 23.8% 23.8%, 25% 6.7%, 40.4% 14.3%); }
+.sticker { position: absolute; right: -14px; top: calc(var(--lead) + var(--q) * (1.38 - var(--k) / 2)); width: calc(var(--q) * var(--k)); height: calc(var(--q) * var(--k)); background: var(--red); transform: rotate(9deg); display: flex; align-items: center; justify-content: center; text-align: center; }
+.sticker .tall { color: #fff; font-size: calc(var(--q) * var(--k) * .216); line-height: .9; }
+
+/* ---- The App Store, on its way: a plate, and the blocks a wait is ---- */
+.store { display: inline-flex; align-items: center; gap: var(--s3); min-height: 52px; padding: 0 20px; margin-top: var(--s5); background: var(--blue); color: var(--yellow); font-weight: 800; font-style: italic; font-size: 17px; line-height: 22px; text-shadow: 2px 2px 0 var(--shade); }
+.wait { display: inline-flex; gap: 4px; flex: none; }
+.wait i { width: 9px; height: 14px; background: currentColor; box-shadow: 2px 2px 0 var(--shade); }
+/* The left block never moves. Only opacity changes. */
+.wait i:nth-child(2) { animation: second 1.5s linear infinite; }
+.wait i:nth-child(3) { animation: third 1.5s linear infinite; }
+@keyframes second { 0%, 33% { opacity: .3; } 33.4%, 100% { opacity: 1; } }
+@keyframes third { 0%, 66% { opacity: .3; } 66.7%, 100% { opacity: 1; } }
+/* The same place, once it is out: the one loud key. */
+a.store:hover, a.store:active { background: var(--yellow); color: var(--blue); text-shadow: none; }
+@media (min-width: 860px) { .store { margin-top: var(--s6); } }
+
+/* ---- A hint: a few words, and a pip that breathes ---- */
+.hint { display: flex; align-items: center; gap: var(--s2); font-weight: 700; font-size: 15px; line-height: 20px; color: var(--blue); }
+.hint i { width: 9px; height: 9px; border-radius: 50%; background: var(--red); flex: none; animation: breathe 2.4s ease-in-out infinite; }
+@keyframes breathe { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: .35; transform: scale(.8); } }
+
+/* ---- Screens: the only round corners ---- */
+.plate { background: var(--blue); color: #fff; }
+.tube { border-radius: var(--tube); }
+.pos { padding: 14px 16px 14px; margin-top: var(--s3); }
+.lr { display: flex; justify-content: space-between; align-items: baseline; gap: var(--s3); }
+.blocks { display: flex; gap: 4px; margin: 10px 0 12px; touch-action: pan-y; cursor: grab; -webkit-user-select: none; user-select: none; }
+.blocks:active { cursor: grabbing; }
+.blocks i { flex: 1; height: 24px; border: 2px solid rgba(255, 255, 255, .5); }
+.blocks i.on { background: #fff; border-color: #fff; }
+.blocks i.at { background: var(--yellow); border-color: var(--yellow); }
+.blocks:focus-visible { outline-color: #fff; }
+.pos .next { border-top: 1px solid rgba(255, 255, 255, .3); padding-top: 11px; }
+.pos .next .osd:last-child { margin-left: auto; }
+/* On a narrow screen the readout says how far, and its label gives way. */
+.pos { container-type: inline-size; }
+@container (max-width: 300px) { .pos .next .dim { display: none; } }
+
+/* ---- A heading: the title face, a highlighter through it, on a rule ---- */
+.head { display: flex; justify-content: space-between; align-items: flex-end; gap: var(--s3); margin-top: var(--s6); padding-bottom: var(--s2); border-bottom: 2px solid var(--blue); }
+.head .tall { font-size: 44px; }
+.hl { position: relative; display: inline-block; }
+.hl u { position: absolute; left: -6px; right: -9px; top: 35%; height: 45%; background: var(--yellow); mix-blend-mode: multiply; transform: rotate(-1.6deg); border-radius: 2px 6px 3px 5px; }
+
+/* ---- A review: what it is about in the first column, the rest from the second ---- */
+.rv { display: grid; grid-template-columns: calc((100% - 5 * var(--g)) / 6) minmax(0, 1fr); column-gap: var(--g); padding: var(--s4) 0; }
+.rv + .rv { border-top: 1px solid var(--hair); }
+.face { width: 100%; aspect-ratio: 1; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 19px; align-self: start; }
+/* A person's colour, at full strength. Ink sinks into the purple. */
+.face.purple { background: var(--purple); color: #fff; }
+.face.orange { background: var(--orange); color: var(--ink); }
+.by { display: flex; justify-content: space-between; align-items: center; min-height: 22px; gap: var(--s2); }
+.flag { background: var(--red); color: #fff; padding: 3px 6px 2px; flex: none; }
+.about { margin-top: 3px; }
+.said { font-size: 16px; line-height: 22px; margin: 7px 0 9px; }
+.signs { display: flex; align-items: center; gap: 6px; }
+.signs .end { margin-left: auto; }
+
+/* The veil: a channel you have not earned. Snow, and two lines from the set. */
+.veil { display: block; width: 100%; margin-top: var(--s2); padding: 14px 16px 13px; border: 0; text-align: left; cursor: pointer; background-color: var(--deep); background-size: 128px 128px; image-rendering: pixelated; font: inherit; color: inherit; transform-origin: 50% 50%; }
+.veil .osd { display: block; }
+.veil .osd + .osd { margin-top: 6px; opacity: .85; }
+.veil:focus-visible { outline-offset: 2px; }
+/* Tuning in: the glass flares and closes to one bright line. */
+.veil.off { animation: off .24s cubic-bezier(.5, 0, .9, .4) forwards; pointer-events: none; }
+@keyframes off {
+  0% { filter: brightness(1); transform: scale(1, 1); }
+  30% { filter: brightness(3); transform: scale(1, .6); }
+  75% { filter: brightness(6); transform: scale(1, .03); opacity: 1; }
+  100% { filter: brightness(6); transform: scale(0, .03); opacity: 0; }
+}
+
+/* ---- The more: a table, ruled ---- */
+.more { padding-top: var(--s2); }
+.row { display: grid; grid-template-columns: calc((100% - 5 * var(--g)) / 6) minmax(0, 1fr); column-gap: var(--g); align-items: baseline; padding: 14px 0 13px; }
+.row + .row { border-top: 1px solid var(--hair); }
+.row b, .row p, .row .far { grid-column: 2; }
+.row b { display: block; font-size: 17px; line-height: 22px; color: var(--blue); }
+.row p { margin-top: 2px; }
+.row .far { margin-top: var(--s2); }
+.row .far svg { display: block; }
+@media (min-width: 860px) {
+  .row { grid-template-columns: repeat(12, minmax(0, 1fr)); padding: 17px 0 16px; }
+  .row > .osd:first-child { grid-column: 1; }
+  .row b { grid-column: 2 / span 3; }
+  .row p { grid-column: 5 / span 6; margin-top: 0; font-size: 17px; }
+  .row .far { grid-column: 11 / span 2; margin-top: 0; justify-self: end; align-self: center; }
+}
+
+/* ---- The foot ---- */
+.foot { margin-top: calc(var(--s6) + var(--s5)); padding-bottom: var(--s6); }
+.doors { border-top: 2px solid var(--blue); }
+.door { display: flex; align-items: baseline; justify-content: space-between; padding: 13px 0; font-weight: 700; font-size: 16px; }
+.door + .door { border-top: 1px solid var(--hair); }
+/* The row under a thumb inverts, at once. */
+.door:hover, .door:active { background: var(--blue); color: #fff; margin: 0 -10px; padding-left: 10px; padding-right: 10px; }
+.door:hover .osd, .door:active .osd { color: #fff; }
+.small { margin-top: var(--s5); }
+.small p + p { margin-top: var(--s2); }
+.small a { text-decoration: underline; text-underline-offset: 2px; }
+.small .osd { display: block; margin-top: var(--s4); }
+@media (min-width: 860px) {
+  .foot { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--g); align-items: start; }
+  .doors { grid-column: 1 / span 5; }
+  .small { grid-column: 7 / span 6; margin-top: 0; padding-top: 13px; border-top: 2px solid var(--blue); }
+}
+
+/* Nothing moves for somebody who asked that nothing should. */
+@media (prefers-reduced-motion: reduce) {
+  .wait i, .hint i, .veil.off { animation: none; }
+  .wait i:nth-child(3) { opacity: .3; }
+}
