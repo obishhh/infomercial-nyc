@@ -2,114 +2,68 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Infomercial</title>
-<meta name="description" content="Rate and review TV with your friends. Tell it what episode you're on, and everything past that is scrambled.">
+<meta name="description" content="Post no spoilers. Watch at your own pace. The group chat can't hurt you here.">
 <meta name="theme-color" content="#FBFAF5">
-<link rel="icon" href="icon.svg" type="image/svg+xml">
-<!-- The page loads its own files and nothing else: no script, style, font
-     or picture from anywhere but here. -->
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; base-uri 'none'; form-action 'none'">
 <meta name="referrer" content="no-referrer">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="site.css">
 </head>
 <body>
 
-<!-- The crayon the marks are drawn in, and the star, once. -->
+<!-- The crayon the pips are drawn in. -->
 <svg class="defs" width="0" height="0" aria-hidden="true">
   <defs>
     <filter id="c1" x="-15%" y="-15%" width="130%" height="130%"><feTurbulence type="fractalNoise" baseFrequency="0.09" numOctaves="2" seed="5" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="3"/></filter>
     <filter id="c2" x="-15%" y="-15%" width="130%" height="130%"><feTurbulence type="fractalNoise" baseFrequency="0.11" numOctaves="2" seed="11" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="3.4"/></filter>
-    <symbol id="star" viewBox="-6 -6 72 72"><polygon filter="url(#c1)" fill="#D92027" points="30,6 34.8,20.1 47.2,16.3 41.7,27.3 54.4,35.6 37.8,36.2 40,50.7 30,41 19.6,51.6 20.6,37.5 8.6,34.9 19.3,27.6 10.5,14.4 25.7,21"/><polygon filter="url(#c2)" fill="none" stroke="#1B33D6" stroke-width="2.4" stroke-linejoin="round" points="30,-1.7 36.3,16.9 52.7,11.9 45.4,26.4 62.2,37.4 40.3,38.2 43.2,57.3 30,44.5 16.3,58.5 17.6,39.9 1.8,36.5 15.9,26.8 4.3,9.4 24.3,18.1"/></symbol>
-    <symbol id="star0" viewBox="-6 -6 72 72"><polygon filter="url(#c2)" fill="none" stroke="#1B33D6" stroke-width="2.4" stroke-linejoin="round" points="30,-1.7 36.3,16.9 52.7,11.9 45.4,26.4 62.2,37.4 40.3,38.2 43.2,57.3 30,44.5 16.3,58.5 17.6,39.9 1.8,36.5 15.9,26.8 4.3,9.4 24.3,18.1"/></symbol>
   </defs>
 </svg>
 
-<!-- The masthead. The name is an outline of the app's own wordmark, so it is
-     the same on a phone that has the face and one that has not. -->
-<header class="mast">
-  <div class="bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-  <h1 class="wrap"><svg class="word" viewBox="58 -980 4732 1040" role="img" aria-label="Infomercial"><path d="M200 -597L200 -714L58 -714L58 -597ZM58 -517L58 0L200 0L200 -517ZM264 -517L264 0L406 0L406 -271Q406 -350 432 -384.5Q458 -419 516 -419Q567 -419 587 -387.5Q607 -356 607 -292L607 0L749 0L749 -318Q749 -366 740.5 -405.5Q732 -445 711 -472.5Q690 -500 653.5 -515.5Q617 -531 560 -531Q515 -531 472 -510.5Q429 -490 402 -445L399 -445L399 -517ZM840 -422L840 0L982 0L982 -422L1080 -422L1080 -517L982 -517L982 -548Q982 -580 994.5 -593.5Q1007 -607 1036 -607Q1063 -607 1088 -604L1088 -710Q1070 -711 1051 -712.5Q1032 -714 1013 -714Q926 -714 883 -670Q840 -626 840 -557L840 -517L755 -517L755 -422ZM1220 -258Q1220 -289 1226 -319Q1232 -349 1246.5 -372Q1261 -395 1285 -409.5Q1309 -424 1345 -424Q1381 -424 1405.5 -409.5Q1430 -395 1444.5 -372Q1459 -349 1465 -319Q1471 -289 1471 -258Q1471 -227 1465 -197.5Q1459 -168 1444.5 -144.5Q1430 -121 1405.5 -107Q1381 -93 1345 -93Q1309 -93 1285 -107Q1261 -121 1246.5 -144.5Q1232 -168 1226 -197.5Q1220 -227 1220 -258ZM1078 -258Q1078 -196 1097 -146Q1116 -96 1151 -60.5Q1186 -25 1235 -6Q1284 13 1345 13Q1406 13 1455.5 -6Q1505 -25 1540 -60.5Q1575 -96 1594 -146Q1613 -196 1613 -258Q1613 -320 1594 -370.5Q1575 -421 1540 -456.5Q1505 -492 1455.5 -511.5Q1406 -531 1345 -531Q1284 -531 1235 -511.5Q1186 -492 1151 -456.5Q1116 -421 1097 -370.5Q1078 -320 1078 -258ZM1661 -517L1661 0L1803 0L1803 -300Q1803 -338 1814 -361.5Q1825 -385 1840.5 -397.5Q1856 -410 1872.5 -414.5Q1889 -419 1899 -419Q1933 -419 1950.5 -407.5Q1968 -396 1975.5 -377Q1983 -358 1984 -335.5Q1985 -313 1985 -290L1985 0L2127 0L2127 -288Q2127 -312 2130.5 -335.5Q2134 -359 2144.5 -377.5Q2155 -396 2173.5 -407.5Q2192 -419 2222 -419Q2252 -419 2269.5 -409Q2287 -399 2296 -382Q2305 -365 2307 -342Q2309 -319 2309 -293L2309 0L2451 0L2451 -346Q2451 -396 2437 -431.5Q2423 -467 2398 -489Q2373 -511 2338 -521Q2303 -531 2262 -531Q2208 -531 2168.5 -505Q2129 -479 2106 -445Q2085 -493 2044.5 -512Q2004 -531 1955 -531Q1904 -531 1864.5 -509Q1825 -487 1797 -447L1795 -447L1795 -517ZM2863 -314L2632 -314Q2633 -329 2638.5 -348Q2644 -367 2657.5 -384Q2671 -401 2693.5 -412.5Q2716 -424 2750 -424Q2802 -424 2827.5 -396Q2853 -368 2863 -314ZM2632 -224L3005 -224Q3009 -284 2995 -339Q2981 -394 2949.5 -437Q2918 -480 2869 -505.5Q2820 -531 2754 -531Q2695 -531 2646.5 -510Q2598 -489 2563 -452.5Q2528 -416 2509 -366Q2490 -316 2490 -258Q2490 -198 2508.5 -148Q2527 -98 2561 -62Q2595 -26 2644 -6.5Q2693 13 2754 13Q2842 13 2904 -27Q2966 -67 2996 -160L2871 -160Q2864 -136 2833 -114.5Q2802 -93 2759 -93Q2699 -93 2667 -124Q2635 -155 2632 -224ZM3041 -517L3041 0L3183 0L3183 -233Q3183 -268 3190 -298Q3197 -328 3213.5 -350.5Q3230 -373 3257 -386Q3284 -399 3323 -399Q3336 -399 3350 -397.5Q3364 -396 3374 -394L3374 -526Q3357 -531 3343 -531Q3316 -531 3291 -523Q3266 -515 3244 -500.5Q3222 -486 3205 -465.5Q3188 -445 3178 -421L3176 -421L3176 -517ZM3734 -335L3873 -335Q3870 -385 3849 -421.5Q3828 -458 3794.5 -482.5Q3761 -507 3718.5 -519Q3676 -531 3630 -531Q3567 -531 3518 -510Q3469 -489 3435 -451.5Q3401 -414 3383.5 -362.5Q3366 -311 3366 -251Q3366 -193 3385 -144.5Q3404 -96 3438 -61Q3472 -26 3520.5 -6.5Q3569 13 3627 13Q3730 13 3796 -41Q3862 -95 3876 -198L3739 -198Q3732 -150 3704.5 -121.5Q3677 -93 3626 -93Q3593 -93 3570 -108Q3547 -123 3533.5 -146.5Q3520 -170 3514 -199Q3508 -228 3508 -256Q3508 -285 3514 -314.5Q3520 -344 3534.5 -368.5Q3549 -393 3572 -408.5Q3595 -424 3629 -424Q3720 -424 3734 -335ZM4054 -597L4054 -714L3912 -714L3912 -597ZM3912 -517L3912 0L4054 0L4054 -517ZM4112 -358Q4115 -408 4137 -441Q4159 -474 4193 -494Q4227 -514 4269.5 -522.5Q4312 -531 4355 -531Q4394 -531 4434 -525.5Q4474 -520 4507 -504Q4540 -488 4561 -459.5Q4582 -431 4582 -384L4582 -115Q4582 -80 4586 -48Q4590 -16 4600 0L4456 0Q4452 -12 4449.5 -24.5Q4447 -37 4446 -50Q4412 -15 4366 -1Q4320 13 4272 13Q4235 13 4203 4Q4171 -5 4147 -24Q4123 -43 4109.5 -72Q4096 -101 4096 -141Q4096 -185 4111.5 -213.5Q4127 -242 4151.5 -259Q4176 -276 4207.5 -284.5Q4239 -293 4271 -298Q4303 -303 4334 -306Q4365 -309 4389 -315Q4413 -321 4427 -332.5Q4441 -344 4440 -366Q4440 -389 4432.5 -402.5Q4425 -416 4412.5 -423.5Q4400 -431 4383.5 -433.5Q4367 -436 4348 -436Q4306 -436 4282 -418Q4258 -400 4254 -358ZM4440 -253Q4431 -245 4417.5 -240.5Q4404 -236 4388.5 -233Q4373 -230 4356 -228Q4339 -226 4322 -223Q4306 -220 4290.5 -215Q4275 -210 4263.5 -201.5Q4252 -193 4245 -180Q4238 -167 4238 -147Q4238 -128 4245 -115Q4252 -102 4264 -94.5Q4276 -87 4292 -84Q4308 -81 4325 -81Q4367 -81 4390 -95Q4413 -109 4424 -128.5Q4435 -148 4437.5 -168Q4440 -188 4440 -200ZM4648 -714L4648 0L4790 0L4790 -714Z"/></svg></h1>
-</header>
-
-<main class="wrap">
-
-  <div class="front">
-    <section class="pitch">
-      <span class="osd r">As seen on TV</span>
-      <h2 class="tall question">How far are you up to?</h2>
-      <div class="burst sticker" aria-hidden="true"><span class="tall">But wait,<br>there's<br>more!</span></div>
-      <p class="voice">Tell it what episode you're on, and everything past that is scrambled.</p>
-
-      <!-- The App Store, on its way. Once the app is out, this one element
-           becomes the loud key:
-           <a class="store" href="https://apps.apple.com/app/id0000000000">Get it for iPhone</a> -->
-      <p class="store"><span class="wait" aria-hidden="true"><i></i><i></i><i></i></span>Coming soon to the App Store</p>
-      <p class="quiet">Free. No ads, no trackers, no password.</p>
-    </section>
-
-    <section class="demo" aria-label="Try it">
-      <p class="hint"><i></i>Go on, drag the yellow one.</p>
-
-      <div class="plate tube pos">
-        <div class="lr"><span class="osd m w">Season 1</span><span class="osd m w" id="read">Ep 4/10</span></div>
-        <div class="blocks" id="track" role="slider" tabindex="0" aria-label="The episode you are on" aria-valuemin="1" aria-valuemax="10" aria-valuenow="4"></div>
-        <div class="lr next"><span class="osd w dim">Catch up</span><span class="osd w" id="catch">5 episodes &rarr; 1 unlock</span></div>
-      </div>
-
-      <div class="head"><h2 class="tall hl">Rumblings<u></u></h2><span class="osd">Season 1</span></div>
-
-      <article class="rv" data-at="3">
-        <span class="face purple" aria-hidden="true">Y</span>
-        <div>
-          <div class="by"><span class="who">@yourgirlken</span><span class="osd flag" hidden>Tuned in</span></div>
-          <div class="osd about">Episode 3</div>
-          <button class="veil tube" type="button" hidden><span class="osd m y" data-away></span><span class="osd w">Tap to tune in</span></button>
-          <div class="read">
-            <p class="said">Every scene feels like it knows something I don't.</p>
-            <div class="signs"><svg width="24" height="24" aria-hidden="true"><use href="#star"/></svg><span class="osd">2</span><span class="osd q end">2h</span></div>
-          </div>
-        </div>
-      </article>
-
-      <article class="rv" data-at="9">
-        <span class="face orange" aria-hidden="true">O</span>
-        <div>
-          <div class="by"><span class="who">@obishhh</span><span class="osd flag" hidden>Tuned in</span></div>
-          <div class="osd about">Episode 9</div>
-          <button class="veil tube" type="button"><span class="osd m y" data-away>5 episodes ahead</span><span class="osd w">Tap to tune in</span></button>
-          <div class="read" hidden>
-            <p class="said">That is not who I thought was in the car.</p>
-            <div class="signs"><svg width="24" height="24" aria-hidden="true"><use href="#star0"/></svg><span class="osd">5</span><span class="osd q end">Yesterday</span></div>
-          </div>
-        </div>
-      </article>
-    </section>
+<!-- One page, one screen: a bill posted on the paper, what is coming, and
+     the small print. Nothing scrolls. -->
+<main class="wall">
+  <div class="bill">
+    <i class="tape a" aria-hidden="true"></i>
+    <i class="tape b" aria-hidden="true"></i>
+    <div class="sheet">
+      <p class="osd notice">Notice &middot; New York, N.Y.</p>
+      <h1 class="tall"><span>Post no</span><span>spoilers</span></h1>
+      <p class="voice">Watch at your own pace.<br>The group chat can't hurt you here.</p>
+      <p class="osd name">infomercial.nyc</p>
+    </div>
   </div>
 
-  <section class="more">
-    <div class="head"><h2 class="tall hl">The more<u></u></h2><span class="osd">4 of it</span></div>
-    <div class="row"><span class="osd">1</span><b>Watch parties</b><p>So the whole group knows where it's safe to talk.</p><span class="osd far">Safe to talk</span></div>
-    <div class="row"><span class="osd">2</span><b>Tier lists</b><p>For ranking a cast and starting a fight.</p><span class="far" aria-hidden="true"><svg width="85" height="22" viewBox="0 0 85 22"><g filter="url(#c1)" fill="#D92027"><circle cx="11" cy="11" r="7.8"/><circle cx="32" cy="10.4" r="7.8"/><circle cx="53" cy="11.5" r="7.8"/><circle cx="74" cy="10.8" r="7.8"/></g></svg></span></div>
-    <div class="row"><span class="osd">3</span><b>One question a day</b><p>Operators are standing by.</p><span class="osd r far" id="closes">Closes in 5h</span></div>
-    <div class="row"><span class="osd">4</span><b>A streak</b><p>For taking part. Not for hours on the couch.</p><span class="osd far">12 days</span></div>
-  </section>
-
-  <footer class="foot">
-    <!-- These three stay where they are for now: the pages the app links to. -->
-    <nav class="doors" aria-label="The small print">
-      <a class="door" href="https://obishhh.github.io/rabbitears-site/">Support<span class="osd">&rsaquo;</span></a>
-      <a class="door" href="https://obishhh.github.io/rabbitears-site/terms.html">Terms<span class="osd">&rsaquo;</span></a>
-      <a class="door" href="https://obishhh.github.io/rabbitears-site/privacy.html">Privacy<span class="osd">&rsaquo;</span></a>
-    </nav>
-    <div class="small quiet">
-      <p>Spoilers sold separately. Void where spoiled.</p>
-      <p>Shows and artwork from <a href="https://www.themoviedb.org/">TMDB</a>, casts from <a href="https://www.tvmaze.com/">TVmaze</a>. This product uses the TMDB API but is not endorsed or certified by TMDB.</p>
-      <span class="osd q">&copy; 2026 Owen Bishop</span>
+  <!-- One line under the bill, and it is always the same height: what is
+       coming, or the box for the password, or the way in. -->
+  <div class="row" id="row" data-state="soon">
+    <p class="soon">
+      <!-- The app's four pips, coloured in one at a time: a ring until it is
+           filled, a disc once it is. -->
+      <svg class="pips" viewBox="0 0 85 22" aria-hidden="true">
+        <g filter="url(#c2)" fill="none" stroke="#1B33D6" stroke-width="1.7"><circle class="r1" cx="11" cy="11" r="7.4"/><circle class="r2" cx="32" cy="10.4" r="7.4"/><circle class="r3" cx="53" cy="11.5" r="7.4"/><circle class="r4" cx="74" cy="10.8" r="7.4"/></g>
+        <g filter="url(#c1)" fill="#D92027"><circle class="d1" cx="11" cy="11" r="7.8"/><circle class="d2" cx="32" cy="10.4" r="7.8"/><circle class="d3" cx="53" cy="11.5" r="7.8"/><circle class="d4" cx="74" cy="10.8" r="7.8"/></g>
+      </svg>
+      <span>Coming soon to the App Store</span>
+    </p>
+    <div class="ask">
+      <input class="box" id="word" type="text" placeholder="Password" aria-label="Early access password" autocomplete="off" autocapitalize="none" autocorrect="off" spellcheck="false" enterkeyhint="go">
+      <button class="key" id="go" type="button">Go</button>
     </div>
-  </footer>
-
+    <a class="key loud" id="in" href="#">Open TestFlight</a>
+  </div>
 </main>
+
+<!-- The foot: the way in early, and the small print. -->
+<nav class="links" aria-label="Early access and the small print">
+  <button id="early" type="button" aria-expanded="false" aria-controls="row">Early access</button>
+  <span class="small">
+    <a href="https://obishhh.github.io/rabbitears-site/">Support</a>
+    <a href="https://obishhh.github.io/rabbitears-site/terms.html">Terms</a>
+    <a href="https://obishhh.github.io/rabbitears-site/privacy.html">Privacy</a>
+  </span>
+</nav>
 
 <script src="site.js"></script>
 </body>
