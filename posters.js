@@ -8,7 +8,7 @@
   var next = document.getElementById('next');
   var n = slots.length;
   if (n < 2) return;
-  var at = 0, running = [], leaving = null;
+  var at = 0, running = [], leaving = null, late = 0;
   var still = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   // A poster's picture is fetched once it is next in line, not before.
@@ -21,6 +21,7 @@
   // A slide still going is finished at once: the one leaving goes, and the
   // one coming on is where it was going.
   function settle() {
+    clearTimeout(late);
     running.forEach(function (a) { a.cancel(); });
     running = [];
     if (leaving) { leaving.hidden = true; leaving = null; }
@@ -44,6 +45,9 @@
     leaving = from;
     running = [out, on];
     out.onfinish = function () { if (leaving === from) settle(); };
+    // A browser that holds its animations back (a tab out of sight, a phone
+    // saving power) never finishes them: the slide is finished by the clock.
+    late = setTimeout(function () { if (leaving === from) settle(); }, timing.duration + 200);
   }
 
   prev.addEventListener('click', function () { go(-1); });
