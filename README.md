@@ -9,8 +9,8 @@ from anywhere else and keeps nothing about who visits it.
 `support/` holds copies of the Support, Terms and Privacy pages from
 [rabbitears-site](https://github.com/obishhh/rabbitears-site), byte for byte, at
 `infomercial.nyc/support/`, `/support/terms.html` and `/support/privacy.html`.
-The originals stay where they are and are still the ones the footer links to.
-A change to one is not a change to the other: copy it across again.
+The footer links to these copies, and the originals stay where they are. A
+change to one is not a change to the other: copy it across again.
 
 © 2026 Owen Bishop. All rights reserved. The fonts in `fonts/` are not ours:
 League Gothic, VT323 and Libre Caslon Text are under the SIL Open Font License,
