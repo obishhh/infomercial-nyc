@@ -26,19 +26,11 @@
 <meta name="twitter:card" content="summary_large_image">
 <!-- The ?v= on the sheet and the scripts goes up whenever that file changes,
      so a browser never pairs this page with a copy it kept from before. -->
-<link rel="stylesheet" href="site.css?v=3">
+<link rel="stylesheet" href="site.css?v=4">
 </head>
 <body>
 
-<!-- The crayon the pips are drawn in. -->
-<svg class="defs" width="0" height="0" aria-hidden="true">
-  <defs>
-    <filter id="c1" x="-15%" y="-15%" width="130%" height="130%"><feTurbulence type="fractalNoise" baseFrequency="0.09" numOctaves="2" seed="5" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="3"/></filter>
-    <filter id="c2" x="-15%" y="-15%" width="130%" height="130%"><feTurbulence type="fractalNoise" baseFrequency="0.11" numOctaves="2" seed="11" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="3.4"/></filter>
-  </defs>
-</svg>
-
-<!-- One page, one screen: a bill posted on the paper, what is coming, and
+<!-- One page, one screen: a bill posted on the paper, the way to the app, and
      the small print. Nothing scrolls. -->
 <main class="wall">
   <!-- The launch posters, one up at a time, each its own bill on the wall.
@@ -86,42 +78,20 @@
     <button class="chev next" id="next" type="button" aria-label="Next poster" hidden><svg viewBox="0 0 12 22" aria-hidden="true"><polyline points="2,2 10,11 2,20"/></svg></button>
   </section>
 
-  <!-- One line under the bill, and it is always the same height: the pips
-       and what is coming, the pips and somewhere to type the password, or
-       the way in. -->
-  <div class="row" id="row" data-state="soon">
-    <div class="line">
-      <!-- The app's four pips, coloured in one at a time: a ring until it is
-           filled, a disc once it is. -->
-      <svg class="pips" viewBox="0 0 85 22" aria-hidden="true">
-        <g class="rings" filter="url(#c2)" fill="none" stroke="#1B33D6" stroke-width="1.7"><circle class="r1" cx="11" cy="11" r="7.4"/><circle class="r2" cx="32" cy="10.4" r="7.4"/><circle class="r3" cx="53" cy="11.5" r="7.4"/><circle class="r4" cx="74" cy="10.8" r="7.4"/></g>
-        <g class="discs" filter="url(#c1)" fill="#D92027"><circle class="d1" cx="11" cy="11" r="7.8"/><circle class="d2" cx="32" cy="10.4" r="7.8"/><circle class="d3" cx="53" cy="11.5" r="7.8"/><circle class="d4" cx="74" cy="10.8" r="7.8"/></g>
-      </svg>
-      <!-- The two take the same room, so the pips never move. -->
-      <div class="say">
-        <p class="soon">Coming soon to the App Store</p>
-        <div class="ask">
-          <input class="word" id="word" type="text" placeholder="password here" aria-label="Early access password" autocomplete="off" autocapitalize="none" autocorrect="off" spellcheck="false" enterkeyhint="go">
-          <button class="mini" id="enter" type="button">Enter</button>
-          <button class="mini" id="nvm" type="button" aria-label="Never mind">NVM</button>
-        </div>
-      </div>
-    </div>
-    <a class="key loud" id="in" href="#">Open TestFlight</a>
+  <!-- One line under the bill: the way to the app, on Apple's own badge,
+       drawn as Apple draws it. -->
+  <div class="row">
+    <a class="store" href="https://apple.co/4z1C3vC"><img src="app-store.svg" width="120" height="40" alt="Download on the App Store"></a>
   </div>
 </main>
 
-<!-- The foot: the way in early, and the small print. -->
-<nav class="links" aria-label="Early access and the small print">
-  <button id="early" type="button" aria-expanded="false" aria-controls="row">Early access</button>
-  <span class="small">
-    <a href="https://obishhh.github.io/rabbitears-site/">Support</a>
-    <a href="https://obishhh.github.io/rabbitears-site/terms.html">Terms</a>
-    <a href="https://obishhh.github.io/rabbitears-site/privacy.html">Privacy</a>
-  </span>
+<!-- The foot: the small print. -->
+<nav class="links" aria-label="The small print">
+  <a href="https://obishhh.github.io/rabbitears-site/">Support</a>
+  <a href="https://obishhh.github.io/rabbitears-site/terms.html">Terms</a>
+  <a href="https://obishhh.github.io/rabbitears-site/privacy.html">Privacy</a>
 </nav>
 
-<script src="site.js?v=2"></script>
 <script src="posters.js?v=2"></script>
 </body>
 </html>

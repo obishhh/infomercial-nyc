@@ -98,77 +98,24 @@ h1, p { margin: 0; }
 .tape.a { left: -6.5cqw; top: -1.6cqw; transform: rotate(-38deg); }
 .tape.b { right: -6.5cqw; top: -1.6cqw; transform: rotate(36deg); }
 
-/* The line under the bill. One height whatever it holds, so nothing above
-   it moves when it changes. */
+/* The line under the bill. */
 /* The room left over is shared out evenly, so the line stands half way
    between the foot of the bill and the small print. The few points here make
    up for the padding inside the links under it. */
 .row { flex: none; height: 44px; margin-top: 8px; display: grid; place-items: center; }
-.row[data-state="soon"] #in, .row[data-state="ask"] #in,
-.row[data-state="open"] .line { display: none; }
-/* The words and the password stand in one place, as wide as the words, and
-   only the one that is up is seen. */
-.row[data-state="soon"] .ask, .row[data-state="ask"] .soon { visibility: hidden; }
 
-/* What is coming: the four pips filling in turn, and one line in small
-   capitals in the colour of a mark. Nothing travels. Each pip is a ring, then
-   a disc, at once. */
-.defs { position: absolute; }
-.line { display: flex; align-items: center; gap: 10px; }
-.say { display: grid; align-items: center; }
-.say > * { grid-area: 1 / 1; }
-.soon { color: var(--red); font-weight: 700; font-size: 12px; line-height: 1; letter-spacing: .14em; text-transform: uppercase; white-space: nowrap; }
-.pips { display: block; flex: none; width: 68px; height: 17.6px; overflow: visible; }
-/* Asked for the password, the pips fill in blue. */
-.row[data-state="ask"] .discs { fill: var(--blue); }
-.pips .d1 { animation: fill1 3s step-end infinite; } .pips .r1 { animation: ring1 3s step-end infinite; }
-.pips .d2 { animation: fill2 3s step-end infinite; } .pips .r2 { animation: ring2 3s step-end infinite; }
-.pips .d3 { animation: fill3 3s step-end infinite; } .pips .r3 { animation: ring3 3s step-end infinite; }
-.pips .d4 { animation: fill4 3s step-end infinite; } .pips .r4 { animation: ring4 3s step-end infinite; }
-@keyframes fill1 { 0% { opacity: 0; } 16.67%, 100% { opacity: 1; } }
-@keyframes ring1 { 0% { opacity: 1; } 16.67%, 100% { opacity: 0; } }
-@keyframes fill2 { 0% { opacity: 0; } 33.34%, 100% { opacity: 1; } }
-@keyframes ring2 { 0% { opacity: 1; } 33.34%, 100% { opacity: 0; } }
-@keyframes fill3 { 0% { opacity: 0; } 50.01%, 100% { opacity: 1; } }
-@keyframes ring3 { 0% { opacity: 1; } 50.01%, 100% { opacity: 0; } }
-@keyframes fill4 { 0% { opacity: 0; } 66.68%, 100% { opacity: 1; } }
-@keyframes ring4 { 0% { opacity: 1; } 66.68%, 100% { opacity: 0; } }
+/* The way to the app is Apple's badge, as Apple draws it: not recoloured,
+   not turned, not taped, with clear paper round it. Its own corners, so the
+   ring that marks it for the keyboard follows them. */
+.store { display: block; border-radius: 10px; -webkit-tap-highlight-color: transparent; }
+.store img { display: block; width: auto; height: 44px; }
 
-/* Somewhere to type is a line ruled on the paper, in the words where the
-   words were. Sixteen points, or a phone zooms in on it. */
-.ask { display: flex; align-items: baseline; min-width: 0; }
-/* The line takes whatever the two keys leave. */
-.word { flex: 1; width: 0; min-width: 0; margin-right: 8px; height: 30px; padding: 0 1px; border: 0; border-bottom: 2px solid var(--blue); border-radius: 0; background: none; color: var(--blue); caret-color: var(--blue); font: 300 16px/1 "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-appearance: none; appearance: none; }
-.word::placeholder { color: var(--blue); opacity: 1; }
-.word.no::placeholder { color: var(--red); }
-.word:focus { outline: none; }
-/* Enter, and never mind: back to what is coming. A key that goes down is
-   inverted, and stays down while the password is checked. */
-.mini { flex: none; padding: 8px 6px; border: 0; border-radius: 0; background: none; color: var(--blue); font: 700 12px/1 "Helvetica Neue", Helvetica, Arial, sans-serif; letter-spacing: .14em; text-transform: uppercase; cursor: pointer; -webkit-appearance: none; appearance: none; }
-.mini:last-child { margin-right: -6px; }
-.mini:hover, .mini:active, .mini.busy { background: var(--blue); color: #fff; }
-.key { display: inline-flex; align-items: center; justify-content: center; height: 44px; padding: 0 18px; border: 2px solid var(--blue); border-radius: 0; background: var(--paper); color: var(--blue); font: 700 16px/1 "Helvetica Neue", Helvetica, Arial, sans-serif; text-decoration: none; white-space: nowrap; cursor: pointer; -webkit-appearance: none; appearance: none; }
-.key:hover, .key:active { background: var(--blue); color: #fff; }
-/* The way in is the one loud key. */
-.key.loud { background: var(--blue); color: var(--yellow); font-weight: 800; font-style: italic; text-shadow: 2px 2px 0 var(--shade); padding: 0 22px; }
-.key.loud:hover, .key.loud:active { background: var(--yellow); border-color: var(--yellow); color: var(--blue); text-shadow: none; }
-
-/* The foot: the way in early and the small print, in one light line. */
+/* The foot: the small print, in one light line. */
 .links { display: flex; align-items: center; gap: 0; }
-.links a, .links button { background: none; border: 0; border-radius: 0; text-decoration: none; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 13px; line-height: 1; padding: 8px 10px; cursor: pointer; }
-.links button { font-weight: 300; color: var(--blue); }
-.links .small { display: flex; gap: 0; }
-.links a { font-weight: 300; color: var(--ink); }
-.links a:hover, .links a:active, .links button:hover, .links button:active { background: var(--blue); color: #fff; }
-/* Picked is inverted. */
-.links button[aria-expanded="true"] { background: var(--blue); color: #fff; }
+.links a { background: none; border: 0; border-radius: 0; text-decoration: none; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 13px; font-weight: 300; line-height: 1; padding: 8px 10px; color: var(--ink); }
+.links a:hover, .links a:active { background: var(--blue); color: #fff; }
 
 @media (min-width: 860px) {
   body { padding-top: 28px; padding-bottom: 18px; }
-  .links a, .links button { font-size: 14px; }
-}
-/* For somebody who asked that nothing move, all four are filled. */
-@media (prefers-reduced-motion: reduce) {
-  .pips circle { animation: none; }
-  .pips .rings circle { opacity: 0; }
+  .links a { font-size: 14px; }
 }
