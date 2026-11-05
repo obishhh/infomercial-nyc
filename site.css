@@ -109,23 +109,16 @@ h1, p { margin: 0; }
    up for the padding inside the links under it. */
 .row { flex: none; height: var(--row); margin-top: 8px; display: grid; place-items: center; }
 
-/* The app, out now: its own icon, Available now, and Apple's badge. It is drawn on the paper, not pasted on it: an outline in
-   the blue, the colour bars across its top, and nothing behind. The whole of
-   it is the way to the app. The badge is as Apple draws it, not recoloured or
-   turned, with a quarter of its height clear all round. */
+/* The app, out now: its own icon, Available now, and Apple's badge. It is
+   drawn on the paper, not pasted on it: the colour bars across its top, and
+   nothing round it or behind it. The whole of it is the way to the app. The
+   badge is as Apple draws it, not recoloured or turned, with a quarter of its
+   height clear all round. */
 .store {
-  --icon: 82px; --badge: 40px; --say: 30px; --gap: 12px; --bars: 10px; --line: 3px;
-  display: flex; align-items: center; gap: 14px; height: 100%; padding: var(--bars) calc(var(--line) + 18px) var(--line) calc(var(--line) + 12px);
+  --icon: 82px; --badge: 40px; --say: 30px; --gap: 12px; --bars: 10px;
+  display: flex; align-items: center; gap: 14px; height: 100%; padding: var(--bars) 21px 3px 15px;
   color: var(--pink); text-decoration: none;
-  /* The bars and the three lines of the outline are one drawing, so they
-     meet without a seam at any size. The last bar is the outline's own blue,
-     so it runs on into it round the corner. */
-  background:
-    linear-gradient(90deg, #FFE600 0 16.67%, #00D5FF 0 33.33%, #00D84A 0 50%, #FF2FD0 0 66.67%, #FF2A2A 0 83.33%, var(--blue) 0) top / 100% var(--bars),
-    linear-gradient(var(--blue) 0 0) left / var(--line) 100%,
-    linear-gradient(var(--blue) 0 0) right / var(--line) 100%,
-    linear-gradient(var(--blue) 0 0) bottom / 100% var(--line);
-  background-repeat: no-repeat;
+  background: linear-gradient(90deg, #FFE600 0 16.67%, #00D5FF 0 33.33%, #00D84A 0 50%, #FF2FD0 0 66.67%, #FF2A2A 0 83.33%, var(--blue) 0) top / 100% var(--bars) no-repeat;
   -webkit-tap-highlight-color: transparent;
 }
 /* The icon, cut to the corners a phone gives it and lifted off the paper on
@@ -166,7 +159,7 @@ h1, p { margin: 0; }
   .store { --icon: 76px; --say: 25px; }
 }
 @media (min-width: 860px) and (min-height: 760px) {
-  .store { --icon: 100px; --badge: 48px; --say: 38px; --gap: 14px; --bars: 12px; gap: 18px; padding-right: calc(var(--line) + 22px); padding-left: calc(var(--line) + 14px); }
+  .store { --icon: 100px; --badge: 48px; --say: 38px; --gap: 14px; --bars: 12px; gap: 18px; padding-right: 25px; padding-left: 17px; }
 }
 
 /* The foot: the small print, in one light line. */
