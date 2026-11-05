@@ -6,6 +6,11 @@ Plain files and nothing to build: `index.html`, `site.css`, `posters.js`, the
 posters, the icon, the App Store badge and three fonts. The page loads nothing
 from anywhere else and keeps nothing about who visits it.
 
+The icon comes twice. `icon.svg` is the app's own, with its name across the
+bars, and stands in the App Store tile. `favicon.svg` is the bars alone, for a
+browser tab, where the name would only blur; `favicon.ico` is the same bars for
+any page that names no icon, which a browser then asks for by that name.
+
 `support/` holds copies of the Support, Terms and Privacy pages from
 [rabbitears-site](https://github.com/obishhh/rabbitears-site), at
 `infomercial.nyc/support/`, `/support/terms.html` and `/support/privacy.html`.
