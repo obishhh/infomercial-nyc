@@ -37,7 +37,7 @@ h1, p { margin: 0; }
    five tall, as big as the room allows either way. On a phone the keys that
    change them stand under the bill, in room kept for them; wider, they stand
    either side of it. */
-.wall { --row: 104px; width: 100%; min-height: 0; container-type: size; display: flex; flex-direction: column; align-items: center; justify-content: space-evenly; }
+.wall { --row: 108px; width: 100%; min-height: 0; container-type: size; display: flex; flex-direction: column; align-items: center; justify-content: space-evenly; }
 .stage {
   position: relative;
   /* The room, less the keys and the tile that stand under it. */
@@ -48,7 +48,7 @@ h1, p { margin: 0; }
   .stage { height: min(96cqh - 42px - var(--row), (100cqw - 2 * var(--g)) * 1.25); margin-bottom: 0; }
 }
 @media (min-width: 860px) and (min-height: 760px) {
-  .wall { --row: 128px; }
+  .wall { --row: 134px; }
 }
 /* One slot for each poster, all in the one place. Only the one that is up is
    there, and the one coming on while it slides. */
@@ -108,27 +108,52 @@ h1, p { margin: 0; }
 .row { flex: none; height: var(--row); margin-top: 8px; display: grid; place-items: center; }
 
 /* The app, out now: its own icon, Available now in the yellow of a caption on
-   the screen, and Apple's badge. It goes up straight and untaped, the one
-   thing on the wall that is not a bill, and the whole of it is the way to the
-   app. The badge is as Apple draws it, not recoloured or turned, with a
-   quarter of its height clear all round. */
+   the screen, and Apple's badge. It is the one thing on the wall that is not
+   a bill but a screen: the dark of a set switched off, round at the corners,
+   with the colour bars along its top. The whole of it is the way to the app.
+   The badge is as Apple draws it, not recoloured or turned, with a quarter of
+   its height clear all round. */
 .store {
-  --icon: 80px; --badge: 44px; --say: 24px; --gap: 12px;
-  display: flex; align-items: center; gap: 14px; height: 100%; padding: 0 18px 0 12px;
-  background: var(--blue); color: #fff; text-decoration: none;
-  box-shadow: 0 1px 2px rgba(14, 20, 64, .18), 0 14px 30px rgba(14, 20, 64, .13);
+  --icon: 80px; --badge: 44px; --say: 24px; --gap: 12px; --bars: 5px;
+  display: flex; align-items: center; gap: 14px; height: 100%; padding: var(--bars) 18px 0 14px;
+  border-radius: 14px; color: #fff; text-decoration: none;
+  background: linear-gradient(90deg, #FFE600 0 16.67%, #00D5FF 0 33.33%, #00D84A 0 50%, #FF2FD0 0 66.67%, #FF2A2A 0 83.33%, #1438FF 0) top / 100% var(--bars) no-repeat var(--shade);
+  box-shadow: 0 1px 2px rgba(14, 20, 64, .22), 0 14px 30px rgba(14, 20, 64, .2);
   -webkit-tap-highlight-color: transparent;
 }
-/* The icon, cut to the corners a phone gives it. */
-.store .app { flex: none; display: block; width: var(--icon); height: var(--icon); border-radius: 22.37%; }
+/* The icon, cut to the corners a phone gives it and lifted off the tile on
+   its own shadow, so its blue bar never runs into the blue. Over it, a sheet
+   of glass: an edge that catches the light top left and bottom right, and a
+   sheen across the top. */
+.store .app {
+  position: relative; flex: none; display: block; width: var(--icon); height: var(--icon); border-radius: 22.37%;
+  box-shadow: 0 1px 1px rgba(5, 9, 58, .35), 0 4px 8px rgba(5, 9, 58, .3), 0 12px 22px rgba(5, 9, 58, .42);
+}
+.store .app img { display: block; width: 100%; height: 100%; border-radius: inherit; }
+.store .app::before, .store .app::after { content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; }
+/* The edge: a ring of light, bright where it faces the light and faint along
+   the sides. */
+.store .app::before {
+  padding: 1.5px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, .95), rgba(255, 255, 255, .22) 32%, rgba(255, 255, 255, .12) 62%, rgba(255, 255, 255, .7));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); mask-composite: exclude;
+}
+/* The sheen, and the glass thickening a little toward its foot. */
+.store .app::after {
+  background:
+    linear-gradient(165deg, rgba(255, 255, 255, .42), rgba(255, 255, 255, .1) 34%, rgba(255, 255, 255, 0) 50%),
+    radial-gradient(140% 70% at 50% 120%, rgba(255, 255, 255, .2), rgba(255, 255, 255, 0) 62%);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, .5), inset 0 -3px 6px rgba(5, 9, 58, .18);
+}
 .store .pitch { display: flex; flex-direction: column; align-items: flex-start; gap: var(--gap); }
-.store .now { font-size: var(--say); color: var(--yellow); text-shadow: 2px 2px 0 var(--shade); }
+.store .now { font-size: var(--say); color: var(--yellow); text-shadow: 2px 2px 0 var(--blue); }
 .store .badge { display: block; width: auto; height: var(--badge); }
-/* Down, the tile goes to the dark of a screen switched off. */
-.store:active { background: var(--shade); }
-@media (hover: hover) { .store:hover { background: var(--shade); } }
+/* Down, the set warms up a little. */
+.store:active { background-color: var(--ink); }
+@media (hover: hover) { .store:hover { background-color: var(--ink); } }
 @media (min-width: 860px) and (min-height: 760px) {
-  .store { --icon: 100px; --badge: 54px; --say: 30px; --gap: 16px; gap: 18px; padding: 0 22px 0 14px; }
+  .store { --icon: 100px; --badge: 54px; --say: 30px; --gap: 16px; --bars: 6px; gap: 18px; padding-right: 24px; padding-left: 16px; border-radius: 16px; }
 }
 
 /* The foot: the small print, in one light line. */
