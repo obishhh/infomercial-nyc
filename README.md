@@ -10,9 +10,9 @@ from anywhere else and keeps nothing about who visits it.
 [rabbitears-site](https://github.com/obishhh/rabbitears-site), at
 `infomercial.nyc/support/`, `/support/terms.html` and `/support/privacy.html`.
 They are the originals word for word, with one thing added: a chevron in the
-margin left of each title, back to the front page. The footer links to these copies, and the
-originals stay where they are. A change to one is not a change to the other:
-copy it across again, and put the chevron back.
+margin left of each title, back to the front page. The footer links to these
+copies, and the originals stay where they are. A change to one is not a change
+to the other: copy it across again, and put the chevron back.
 
 © 2026 Owen Bishop. All rights reserved. The fonts in `fonts/` are not ours:
 League Gothic, VT323 and Libre Caslon Text are under the SIL Open Font License,
