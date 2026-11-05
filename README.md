@@ -9,8 +9,8 @@ from anywhere else and keeps nothing about who visits it.
 `support/` holds copies of the Support, Terms and Privacy pages from
 [rabbitears-site](https://github.com/obishhh/rabbitears-site), at
 `infomercial.nyc/support/`, `/support/terms.html` and `/support/privacy.html`.
-They are the originals word for word, with one thing added: a chevron before
-each title, back to the front page. The footer links to these copies, and the
+They are the originals word for word, with one thing added: a chevron in the
+margin left of each title, back to the front page. The footer links to these copies, and the
 originals stay where they are. A change to one is not a change to the other:
 copy it across again, and put the chevron back.
 
