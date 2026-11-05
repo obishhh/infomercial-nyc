@@ -6,6 +6,8 @@
 <title>Infomercial</title>
 <meta name="description" content="Post no spoilers. Watch at your own pace. The group chat can't hurt you here.">
 <meta name="theme-color" content="#FBFAF5">
+<!-- On an iPhone, Safari offers the app itself across the top of the page. -->
+<meta name="apple-itunes-app" content="app-id=6814215735">
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; base-uri 'none'; form-action 'none'">
 <meta name="referrer" content="no-referrer">
 <link rel="icon" href="icon.svg" type="image/svg+xml">
@@ -26,7 +28,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <!-- The ?v= on the sheet and the scripts goes up whenever that file changes,
      so a browser never pairs this page with a copy it kept from before. -->
-<link rel="stylesheet" href="site.css?v=4">
+<link rel="stylesheet" href="site.css?v=5">
 </head>
 <body>
 
@@ -78,10 +80,16 @@
     <button class="chev next" id="next" type="button" aria-label="Next poster" hidden><svg viewBox="0 0 12 22" aria-hidden="true"><polyline points="2,2 10,11 2,20"/></svg></button>
   </section>
 
-  <!-- One line under the bill: the way to the app, on Apple's own badge,
-       drawn as Apple draws it. -->
+  <!-- Under the bill, the one loud thing on the wall: the app, out now, and
+       the way to it on Apple's own badge. All of it is the one link. -->
   <div class="row">
-    <a class="store" href="https://apple.co/4z1C3vC"><img src="app-store.svg" width="120" height="40" alt="Download on the App Store"></a>
+    <a class="store" href="https://apple.co/4z1C3vC" aria-label="Infomercial is available now. Download on the App Store">
+      <img class="app" src="icon.svg" width="1024" height="1024" alt="">
+      <span class="pitch">
+        <span class="osd now">Available now</span>
+        <img class="badge" src="app-store.svg" width="120" height="40" alt="">
+      </span>
+    </a>
   </div>
 </main>
 
