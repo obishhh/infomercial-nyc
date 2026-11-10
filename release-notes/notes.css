@@ -127,16 +127,12 @@ p, h1, h2, h3, ul { margin: 0; }
 .sub i { flex: 1; height: 1px; background: var(--hair); }
 .sub .count { color: var(--blue); }
 
-/* Each change is a row, ruled off from the next: what it is in plain
-   words, and under it, smaller and quieter, a line or two more. */
-.notes { list-style: none; padding: 0; margin-top: 4px; }
-.notes > li { padding: 12px 0 13px; border-bottom: 1px solid var(--hair); }
-.notes > li:last-child { border-bottom: 0; padding-bottom: 0; }
-.notes p { font-size: 17px; line-height: 1.3; font-weight: 700; letter-spacing: -.005em; }
-.notes ul { list-style: none; padding: 0; margin-top: 4px; }
-.notes ul li { position: relative; margin-top: 2px; padding-left: 15px; font-size: 15px; line-height: 1.4; color: var(--soft); }
-.notes ul li::before { content: ""; position: absolute; left: 1px; top: .55em; width: 5px; height: 5px; background: var(--blue); }
-.build > .notes { margin-top: 8px; }
+/* Each change is one line in plain words, with a square of its kind's
+   colour before it, or the blue where it has no kind. */
+.notes { list-style: none; padding: 0; margin-top: 10px; }
+.notes li { position: relative; padding: 4px 0 4px 18px; font-size: 17px; line-height: 1.35; }
+.notes li::before { content: ""; position: absolute; left: 1px; top: calc(4px + .5em); width: 7px; height: 7px; background: var(--stock, var(--blue)); }
+.build > .notes { margin-top: 14px; }
 
 /* The sticker: the catchphrase on a burst, the + key's shape, tipped the
    way a hand put it on. It stands where a heading's readout would. */
@@ -176,8 +172,7 @@ p, h1, h2, h3, ul { margin: 0; }
   body { padding-top: 48px; padding-bottom: 28px; }
   .band { height: 128px; }
   .strap { margin-top: 20px; font-size: 22px; }
-  .notes p { font-size: 18px; }
-  .notes ul li { font-size: 16px; }
+  .notes li { font-size: 18px; }
   .line { font-size: 15px; }
   .foot a { font-size: 14px; }
 }
