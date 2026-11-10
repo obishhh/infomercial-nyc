@@ -136,25 +136,6 @@ p, h1, h2, h3, ul { margin: 0; }
 .notes li::before { content: ""; position: absolute; left: 1px; top: calc(4px + .5em); width: 7px; height: 7px; background: var(--stock, var(--blue)); }
 .build > .notes { margin-top: 14px; }
 
-/* The sticker: the catchphrase on a burst, the + key's shape, tipped the
-   way a hand put it on. It stands where a heading's readout would. */
-.sticker {
-  position: absolute; right: -6px; bottom: -40px; z-index: 1;
-  width: 104px; height: 104px; display: flex; flex-direction: column; align-items: center; justify-content: center;
-  background: var(--red); color: #fff; transform: rotate(-7deg);
-  font: 400 19px/.92 var(--station); text-transform: uppercase; text-align: center;
-  clip-path: polygon(50% 0, 59.6% 14.3%, 75% 6.7%, 76.2% 23.8%, 93.3% 25%, 85.7% 40.4%,
-    100% 50%, 85.7% 59.6%, 93.3% 75%, 76.2% 76.2%, 75% 93.3%, 59.6% 85.7%,
-    50% 100%, 40.4% 85.7%, 25% 93.3%, 23.8% 76.2%, 6.7% 75%, 14.3% 59.6%,
-    0 50%, 14.3% 40.4%, 6.7% 25%, 23.8% 23.8%, 25% 6.7%, 40.4% 14.3%);
-}
-.sticker span { display: block; white-space: nowrap; }
-/* On the narrowest phones it comes down a size, clear of the line under
-   the rule. */
-@media (max-width: 359px) {
-  .sticker { width: 92px; height: 92px; bottom: -34px; font-size: 17px; }
-}
-
 /* The small print, as the front page has it. The page this is is picked,
    which is the plain link inverted. */
 .foot {
