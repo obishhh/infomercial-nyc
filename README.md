@@ -28,9 +28,8 @@ has a sheet and a script of its own (`notes.css`, and `notes.js`, which fits
 the word across the band). Coming up is what is merged for the next build and
 not on the App Store yet; when that build ships, its heading loses Coming up and
 takes the month, it moves under Already on, and its notes are the App Store's
-What's New. Change the date beside Coming up whenever it changes. Only what
-has been merged goes on it, in plain words: nothing still being worked on,
-and nothing about how it was built.
+What's New. Only what has been merged goes on it, in plain words: nothing
+still being worked on, and nothing about how it was built.
 
 © 2026 Owen Bishop. All rights reserved. The fonts in `fonts/` are not ours:
 League Gothic, VT323 and Libre Caslon Text are under the SIL Open Font License,

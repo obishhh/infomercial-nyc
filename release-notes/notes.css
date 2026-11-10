@@ -93,8 +93,6 @@ p, h1, h2, h3, ul { margin: 0; }
   font: 400 20px/1 var(--set); letter-spacing: .04em; text-transform: uppercase; white-space: nowrap;
   color: var(--blue);
 }
-/* A day is time, and time is the red. */
-.index.day { color: var(--red); }
 
 /* What a section is, said small and quiet under its rule. */
 .line { margin-top: 10px; font-size: 14px; line-height: 1.4; color: var(--soft); }
