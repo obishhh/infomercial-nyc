@@ -74,13 +74,15 @@ p, h1, h2, h3, ul { margin: 0; }
 /* A heading: the station's face in the blue with a highlighter through it,
    on a rule, with a readout at the far end. */
 .heading {
-  position: relative; display: flex; align-items: flex-end; gap: 12px;
+  position: relative; display: flex; flex-wrap: wrap; align-items: flex-end; gap: 4px 12px;
   margin-top: 40px; padding-bottom: 8px; border-bottom: 2px solid var(--blue);
 }
 .heading h2 { font: 400 44px/1 var(--station); text-transform: uppercase; color: var(--blue); }
 /* The face keeps a fifth of its size clear over its capitals, so the box
    is drawn in to the capitals and the stripe measures from them. */
-.heading h2 span { position: relative; display: block; margin: -.2em 0 -.04em; padding-top: .2em; }
+.heading h2 span { position: relative; display: block; margin: -.2em 0 -.04em; padding-top: .2em; white-space: nowrap; }
+/* A title is one line. Where it and its readout will not fit side by side,
+   on the narrowest phones, the readout drops under it, at the far end. */
 .heading h2 span::after {
   content: ""; position: absolute; left: -7px; right: -7px; top: calc(.2em + 30%); height: 36%;
   background: var(--yellow); mix-blend-mode: multiply; transform: rotate(-1.6deg);

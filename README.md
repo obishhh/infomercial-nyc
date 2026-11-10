@@ -26,8 +26,8 @@ to, which here is desk@infomercial.nyc.
 `infomercial.nyc/release-notes`, linked from the foot of the front page. It
 has a sheet and a script of its own (`notes.css`, and `notes.js`, which fits
 the word across the band). Coming up is what is merged for the next build and
-not on the App Store yet; when that build ships, the section takes its version
-number and month, moves under Already on, and its notes are the App Store's
+not on the App Store yet; when that build ships, its heading loses Coming up and
+takes the month, it moves under Already on, and its notes are the App Store's
 What's New. Change the date beside Coming up whenever it changes. Only what
 has been merged goes on it, in plain words: nothing still being worked on,
 and nothing about how it was built.
