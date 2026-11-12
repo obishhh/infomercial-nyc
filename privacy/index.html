@@ -30,13 +30,13 @@
               stroke-width: 2.8; stroke-linecap: square; }
   .back:hover, .back:active { background: #1B33D6; color: #fff; }
   .back:focus-visible { outline: 2px solid #1B33D6; outline-offset: 3px; }
-  /* The small print, as the front page has it: the pages about what's
-     next, a rule, then the three about the app, and no dots. On a phone
-     the rule is the break between two lines. */
+  /* The small print, as the front page has it: the release notes, a
+     rule, then the pages about the app, and no dots. On the narrowest
+     phones the rule is the break between two lines. */
   .foot a { white-space: nowrap; }
   .foot a + a, .foot .bar, .foot .bar + a { margin-left: 14px; }
   .foot .bar { color: rgba(14, 20, 64, 0.3); }
-  @media (max-width: 559px) {
+  @media (max-width: 359px) {
     .foot .bar { display: block; height: 6px; margin: 0; overflow: hidden; color: transparent; }
     .foot .bar + a { margin-left: 0; }
   }
@@ -97,9 +97,9 @@ checked for, and who that found, so that the whole list is not sent again every 
 you open the app.</p>
 
 <h3>Feature requests</h3>
-<p>The feature request form on this website keeps what you write in it and, if you
-give one, how to reach you, so we can read it and write back. Nothing else is kept
-with it: no account and no cookies. It is stored with Supabase, in a database of its
+<p>The box for feature requests, at the top of the release notes on this website,
+keeps what you write in it, so we can read it. Nothing else is kept with it: no
+account and no cookies. It is stored with Supabase, in a database of its
 own that is separate from the app's, and only we can read it. Our database provider's
 request logs note the IP address a request came from. To have a request deleted, email
 <a href="mailto:desk@infomercial.nyc">desk@infomercial.nyc</a>.</p>
@@ -215,6 +215,6 @@ anything from them.</p>
 <a href="mailto:desk@infomercial.nyc">desk@infomercial.nyc</a>.</p>
 
 <hr>
-<p class="quiet foot"><a href="../release-notes/">Release notes</a><a href="../feature-request/">Feature request</a><span class="bar" aria-hidden="true">|</span><a href="../support/">Support</a><a href="../terms/">Terms</a></p>
+<p class="quiet foot"><a href="../release-notes/">Release notes</a><span class="bar" aria-hidden="true">|</span><a href="../support/">Support</a><a href="../terms/">Terms</a></p>
 </body>
 </html>

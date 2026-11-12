@@ -1,18 +1,19 @@
-// Sends a feature request to the website's own database, which is not the
-// app's. The key below is the publishable one: it is meant to be public,
-// and all it can do is call the one function that takes a request. The
-// table behind it grants nothing, so nobody can read what was sent with it.
-// The function and its limits are in the app's repository, Tools/site.
+// Sends a feature request, from the box at the top of the release notes, to
+// the website's own database, which is not the app's. The key below is the
+// publishable one: it is meant to be public, and all it can do is call the
+// one function that takes a request. The table behind it grants nothing, so
+// nobody can read what was sent with it. The function and its limits are in
+// the app's repository, Tools/site.
 (function () {
   var ENDPOINT = "https://sevwmqmzawqldbnoyeng.supabase.co/rest/v1/rpc/infomercial_request_feature";
   var KEY = "sb_publishable_GYYPD8WhHH8K-CwCmSwtvA_AXjINfCp";
 
   var form = document.getElementById("request");
   var words = document.getElementById("words");
-  var contact = document.getElementById("contact");
   var trap = document.getElementById("website");
   var key = document.getElementById("send");
   var said = document.getElementById("said");
+  if (!form) return;
   var sending = false;
 
   function say(text, fault) {
@@ -22,7 +23,6 @@
 
   function sent() {
     words.value = "";
-    contact.value = "";
     say("Sent. Thanks for the idea.");
   }
 
@@ -50,7 +50,7 @@
     fetch(ENDPOINT, {
       method: "POST",
       headers: { "apikey": KEY, "Content-Type": "application/json" },
-      body: JSON.stringify({ p_body: body, p_contact: contact.value.trim() || null })
+      body: JSON.stringify({ p_body: body })
     })
       .then(function (response) {
         if (response.ok) return;

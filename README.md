@@ -31,15 +31,16 @@ its notes are the App Store's What's New. Only what has been merged goes on it,
 a line each in plain words: nothing still being worked on, and nothing about
 how it was built. Support, Terms and Privacy link to it in their small print.
 
-`feature-request/` is a form for asking for something, at
-`infomercial.nyc/feature-request`, set like the pages above. It is the one
-page here that sends anything anywhere: what is typed into it goes, by
-`request.js`, to a Supabase project of the website's own, which is not the
-app's. The key in `request.js` is that project's publishable one, meant to be
-public: all it can do is call the one function that takes a request, and the
-table behind it grants nothing, so nobody can read what was sent. Requests
-are read on that project's dashboard. The table and the function, and a
-check of what they promise, are in the app's repository under `Tools/site`.
+At the top of the release notes is a box for asking for something. It is the
+one thing here that sends anything anywhere: what is typed into it goes, by
+`release-notes/request.js`, to a Supabase project of the website's own, which
+is not the app's. The key in `request.js` is that project's publishable one,
+meant to be public: all it can do is call the one function that takes a
+request, and the table behind it grants nothing, so nobody can read what was
+sent. Requests are read on that project's dashboard. The table and the
+function, and a check of what they promise, are in the app's repository
+under `Tools/site`. `feature-request/` only sends a reader on to the release
+notes, where the box went.
 
 © 2026 Owen Bishop. All rights reserved. The fonts in `fonts/` are not ours:
 League Gothic, VT323 and Libre Caslon Text are under the SIL Open Font License,

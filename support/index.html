@@ -30,13 +30,13 @@
               stroke-width: 2.8; stroke-linecap: square; }
   .back:hover, .back:active { background: #1B33D6; color: #fff; }
   .back:focus-visible { outline: 2px solid #1B33D6; outline-offset: 3px; }
-  /* The small print, as the front page has it: the pages about what's
-     next, a rule, then the three about the app, and no dots. On a phone
-     the rule is the break between two lines. */
+  /* The small print, as the front page has it: the release notes, a
+     rule, then the pages about the app, and no dots. On the narrowest
+     phones the rule is the break between two lines. */
   .foot a { white-space: nowrap; }
   .foot a + a, .foot .bar, .foot .bar + a { margin-left: 14px; }
   .foot .bar { color: rgba(14, 20, 64, 0.3); }
-  @media (max-width: 559px) {
+  @media (max-width: 359px) {
     .foot .bar { display: block; height: 6px; margin: 0; overflow: hidden; color: transparent; }
     .foot .bar + a { margin-left: 0; }
   }
@@ -55,8 +55,8 @@ catch up.</p>
 you were doing and what happened. It goes to a person, not a queue.</p>
 
 <h3>I have an idea</h3>
-<p>Tell us on the <a href="../feature-request/">feature request</a> page. A person reads
-every one.</p>
+<p>Tell us in the box at the top of the <a href="../release-notes/">release notes</a>. A
+person reads every one.</p>
 
 <h3>Why is a review scrambled?</h3>
 <p>Because it was written from further into the show than you have got. The scrambled
@@ -140,7 +140,7 @@ season over 120 episodes, because a daily strip isn't something you're "up to ep
 seven of".</p>
 
 <hr>
-<p class="quiet foot"><a href="../release-notes/">Release notes</a><a href="../feature-request/">Feature request</a><span class="bar" aria-hidden="true">|</span><a href="../privacy/">Privacy Policy</a><a href="../terms/">Terms</a></p>
+<p class="quiet foot"><a href="../release-notes/">Release notes</a><span class="bar" aria-hidden="true">|</span><a href="../privacy/">Privacy Policy</a><a href="../terms/">Terms</a></p>
 <p class="quiet">Shows and artwork from
 <a href="https://www.themoviedb.org/">TMDB</a>. This product uses the TMDB API but is
 not endorsed or certified by TMDB. Casts from
