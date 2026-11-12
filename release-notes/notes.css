@@ -94,25 +94,6 @@ p, h1, h2, h3, ul { margin: 0; }
   color: var(--blue);
 }
 
-/* What a section is, said small and quiet under its rule. */
-.line { margin-top: 10px; font-size: 14px; line-height: 1.4; color: var(--soft); }
-.line a { color: var(--blue); text-decoration-thickness: 1px; text-underline-offset: 2px; }
-.line a:active { background: var(--blue); color: #fff; text-decoration: none; }
-@media (hover: hover) { .line a:hover { background: var(--blue); color: #fff; text-decoration: none; } }
-
-/* The live dot: a lamp, so it is round, with a halo swelling off it and
-   fading. It holds still for anybody who has asked for less motion. */
-.live {
-  position: relative; display: inline-block; width: 8px; height: 8px; margin-right: 7px;
-  border-radius: 50%; background: var(--red); vertical-align: 1px;
-}
-.live::after {
-  content: ""; position: absolute; inset: 0; border-radius: 50%; background: var(--red);
-  animation: halo 2.4s ease-out infinite;
-}
-@keyframes halo { from { transform: scale(1); opacity: .55; } to { transform: scale(2.8); opacity: 0; } }
-@media (prefers-reduced-motion: reduce) { .live::after { animation: none; opacity: 0; } }
-
 /* A kind of change: its name on a block of the stock, with ink on it, then
    a hairline to the far end and how many. Each kind keeps its colour. */
 .group { margin-top: 24px; }
@@ -156,6 +137,5 @@ p, h1, h2, h3, ul { margin: 0; }
   body { padding-top: 48px; padding-bottom: 28px; }
   .band { height: 128px; }
   .notes li { font-size: 18px; }
-  .line { font-size: 15px; }
   .foot a { font-size: 14px; }
 }

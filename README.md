@@ -27,8 +27,7 @@ to, which here is desk@infomercial.nyc.
 has a sheet and a script of its own (`notes.css`, and `notes.js`, which fits
 the word across the band). The first section is what is merged for the next
 build and not on the App Store yet; when that build ships, its month goes
-beside its number, it says it is on air, a section for the build after goes
-over it, and its notes are the App Store's What's New. Only what has been
+beside its number, a section for the build after goes over it, and its notes are the App Store's What's New. Only what has been
 merged goes on it, in plain words: nothing still being worked on, and nothing
 about how it was built.
 
