@@ -30,6 +30,16 @@
               stroke-width: 2.8; stroke-linecap: square; }
   .back:hover, .back:active { background: #1B33D6; color: #fff; }
   .back:focus-visible { outline: 2px solid #1B33D6; outline-offset: 3px; }
+  /* The small print, as the front page has it: the pages about what's
+     next, a rule, then the three about the app, and no dots. On a phone
+     the rule is the break between two lines. */
+  .foot a { white-space: nowrap; }
+  .foot a + a, .foot .bar, .foot .bar + a { margin-left: 14px; }
+  .foot .bar { color: rgba(14, 20, 64, 0.3); }
+  @media (max-width: 559px) {
+    .foot .bar { display: block; height: 6px; margin: 0; overflow: hidden; color: transparent; }
+    .foot .bar + a { margin-left: 0; }
+  }
 </style>
 </head>
 <body>
@@ -97,6 +107,6 @@ Infomercial after that means agreeing to the new ones.</p>
 <a href="mailto:desk@infomercial.nyc">desk@infomercial.nyc</a>.</p>
 
 <hr>
-<p class="quiet"><a href="../release-notes/">Release notes</a> &middot; <a href="../support/">Support</a> &middot; <a href="../privacy/">Privacy Policy</a></p>
+<p class="quiet foot"><a href="../release-notes/">Release notes</a><a href="../feature-request/">Feature request</a><span class="bar" aria-hidden="true">|</span><a href="../support/">Support</a><a href="../privacy/">Privacy Policy</a></p>
 </body>
 </html>

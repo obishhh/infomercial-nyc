@@ -162,13 +162,17 @@ h1, p { margin: 0; }
   .store { --icon: 100px; --badge: 48px; --say: 38px; --gap: 14px; --bars: 12px; gap: 18px; padding-right: 25px; padding-left: 17px; }
 }
 
-/* The foot: the small print, in one light line. */
-.links { display: flex; align-items: center; gap: 0; }
+/* The foot: the small print, in one light line, or two on a phone. */
+.links { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 0; max-width: 100%; }
 .links a { background: none; border: 0; border-radius: 0; text-decoration: none; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 13px; font-weight: 300; line-height: 1; padding: 8px 10px; color: var(--ink); white-space: nowrap; }
 .links a:hover, .links a:active { background: var(--blue); color: #fff; }
-/* Release notes, then a rule, then the three pages about the app. */
+/* Release notes and Feature request, then a rule, then the three pages
+   about the app. */
 .links .sep { flex: none; width: 1px; height: 14px; margin: 0 4px; background: rgba(14, 20, 64, .3); }
-/* All of it on the narrowest phones stands a little closer, on one line. */
+/* On a phone the two pages about what's next stand on one line and the
+   three about the app on the line under, and the rule between them is
+   that break. On the narrowest they stand a little closer. */
+@media (max-width: 559px) { .links .sep { flex-basis: 100%; width: auto; height: 0; margin: 0; background: none; } }
 @media (max-width: 359px) { .links a { padding-left: 7px; padding-right: 7px; } }
 
 @media (min-width: 860px) {
