@@ -59,6 +59,12 @@ h1, p { margin: 0; }
   position: absolute; inset: 0; container-type: inline-size;
   background: var(--blue); color: #fff;
   box-shadow: 0 1px 2px rgba(14, 20, 64, .18), 0 14px 30px rgba(14, 20, 64, .13);
+  /* A tipped picture drawn tipped came out with an edge in steps on a
+     phone, a stair down the top of the bill. Drawn straight on a layer of
+     its own and the layer tipped, the edge is smoothed, and a clear pixel
+     round it keeps the layer's own edge off the bill's. */
+  will-change: transform; -webkit-backface-visibility: hidden; backface-visibility: hidden;
+  outline: 1px solid transparent;
 }
 /* Each was put up by hand, a little off straight its own way. */
 .t1 { transform: rotate(-1.1deg); } .t2 { transform: rotate(.8deg); }
