@@ -21,13 +21,30 @@
     said.className = fault ? "said fault" : "said";
   }
 
+  // The box is as tall as what is in it, two lines at the least, and
+  // scrolls once it reaches the most its style allows.
+  function fit() {
+    words.style.height = "auto";
+    var edges = words.offsetHeight - words.clientHeight;
+    var most = parseFloat(getComputedStyle(words).maxHeight) || Infinity;
+    var tall = words.scrollHeight + edges;
+    words.style.height = Math.min(tall, most) + "px";
+    words.style.overflowY = tall > most ? "auto" : "hidden";
+  }
+
   function sent() {
     words.value = "";
+    fit();
     say("Sent. Thanks for the idea.");
   }
 
-  // Typing again clears what the last press said.
-  words.addEventListener("input", function () { if (said.textContent) say(""); });
+  // Typing grows the box, and clears what the last press said.
+  words.addEventListener("input", function () {
+    fit();
+    if (said.textContent) say("");
+  });
+  window.addEventListener("resize", fit);
+  fit();
 
   form.addEventListener("submit", function (event) {
     event.preventDefault();

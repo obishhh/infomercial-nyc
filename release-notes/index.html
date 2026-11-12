@@ -65,8 +65,10 @@
      question on Support, a box on the paper, square, at a size a phone types
      in without zooming, and a key inverted while it is down. */
   label { display: block; margin: 0 0 8px; color: #1B33D6; font-size: 18px; font-weight: 700; line-height: 1.25; }
-  textarea { display: block; box-sizing: border-box; width: 100%; min-height: 110px; margin: 0; padding: 10px 12px;
-             border: 2px solid #1B33D6; border-radius: 0; background: #fff; color: #0E1440; resize: vertical;
+  /* Two lines to start with, and it grows a line at a time as it is
+     typed in (request.js), up to half the screen, past which it scrolls. */
+  textarea { display: block; box-sizing: border-box; width: 100%; max-height: 50vh; margin: 0; padding: 10px 12px;
+             border: 2px solid #1B33D6; border-radius: 0; background: #fff; color: #0E1440; resize: none; overflow-y: hidden;
              font: 16px/1.45 'Helvetica Neue', Helvetica, Arial, sans-serif; -webkit-appearance: none; appearance: none; }
   textarea:focus { outline: 2px solid #1B33D6; outline-offset: 2px; }
   ::placeholder { color: rgba(14, 20, 64, 0.4); }
@@ -103,7 +105,7 @@
      request.js; it is read on that project's dashboard. -->
 <form id="request" novalidate>
   <label for="words">Request a feature</label>
-  <textarea id="words" name="words" maxlength="1000" placeholder="What should it do?"></textarea>
+  <textarea id="words" name="words" rows="2" maxlength="1000" placeholder="What should it do?"></textarea>
   <div class="trap" aria-hidden="true">
     <label for="website">Leave this empty</label>
     <input id="website" name="website" type="text" tabindex="-1" autocomplete="off">
@@ -169,6 +171,6 @@
 <hr>
 <p class="quiet foot"><a href="../support/">Support</a><a href="../privacy/">Privacy Policy</a><a href="../terms/">Terms</a></p>
 
-<script src="request.js?v=1"></script>
+<script src="request.js?v=2"></script>
 </body>
 </html>
