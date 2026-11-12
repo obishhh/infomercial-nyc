@@ -16,10 +16,16 @@
 
 * { box-sizing: border-box; }
 html, body { height: 100%; margin: 0; background: var(--paper); }
+/* The page itself may still be pulled down, so a phone's own pull to
+   refresh works. Locked with overflow: hidden on the body, which a
+   browser hands up to the whole page, it could not be. So the page is
+   the one that scrolls, and the body clips what pokes past it: a tipped
+   bill and its tape never give it anything to scroll to. */
+html { overflow: auto; }
 /* The page is exactly the screen: the bill takes what the two lines under it
    leave, and nothing runs past the foot. */
 body {
-  height: 100dvh; overflow: hidden; color: var(--ink);
+  height: 100dvh; overflow: hidden; overflow: clip; color: var(--ink);
   display: grid; grid-template-rows: minmax(0, 1fr) auto; justify-items: center;
   padding: max(20px, env(safe-area-inset-top)) 16px max(14px, env(safe-area-inset-bottom));
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
