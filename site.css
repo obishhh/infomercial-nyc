@@ -70,20 +70,20 @@ h1, p { margin: 0; }
 .bill.pic { background: #ECE9DF; }
 .bill.pic img { position: absolute; inset: 0; display: block; width: 100%; height: 100%; }
 
-/* The keys: a chevron in the blue, inverted while it is down. On a phone the
-   two stand side by side under the bill. */
-.chev { position: absolute; top: calc(100% + 20px); width: 44px; height: 36px; padding: 0; border: 0; border-radius: 0; background: none; color: var(--blue); display: grid; place-items: center; cursor: pointer; -webkit-appearance: none; appearance: none; -webkit-tap-highlight-color: transparent; }
-.chev svg { width: 10px; height: 18px; overflow: visible; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: square; }
-.chev.prev { right: calc(50% + 4px); }
-.chev.next { left: calc(50% + 4px); }
-.chev:active { background: var(--blue); color: #fff; }
-@media (hover: hover) { .chev:hover { background: var(--blue); color: #fff; } }
+/* The keys: an arrow in the blue, a stick with a head on it, inverted
+   while it is down. On a phone the two stand side by side under the bill. */
+.arrow { position: absolute; top: calc(100% + 20px); width: 48px; height: 36px; padding: 0; border: 0; border-radius: 0; background: none; color: var(--blue); display: grid; place-items: center; cursor: pointer; -webkit-appearance: none; appearance: none; -webkit-tap-highlight-color: transparent; }
+.arrow svg { width: 20px; height: 16px; overflow: visible; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: square; stroke-linejoin: miter; }
+.arrow.prev { right: calc(50% + 4px); }
+.arrow.next { left: calc(50% + 4px); }
+.arrow:active { background: var(--blue); color: #fff; }
+@media (hover: hover) { .arrow:hover { background: var(--blue); color: #fff; } }
 /* Wider, either side of it, half way down. */
 @media (min-width: 600px) {
-  .chev { top: 50%; width: 36px; height: 56px; margin-top: -28px; }
-  .chev svg { width: 12px; height: 22px; }
-  .chev.prev { right: auto; left: calc(-4px - var(--g)); }
-  .chev.next { left: auto; right: calc(-4px - var(--g)); }
+  .arrow { top: 50%; width: 48px; height: 48px; margin-top: -24px; }
+  .arrow svg { width: 24px; height: 19px; }
+  .arrow.prev { right: auto; left: calc(-4px - var(--g)); }
+  .arrow.next { left: auto; right: calc(-4px - var(--g)); }
 }
 /* Everything printed on the bill is sized off the bill's own width, so it
    is the same bill at any size. */
