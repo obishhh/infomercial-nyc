@@ -25,7 +25,7 @@ to, which here is desk@infomercial.nyc.
 `release-notes/` is what has changed in the app, build by build, at
 `infomercial.nyc/release-notes`, linked from the foot of the front page. It is
 set like Support, Terms and Privacy, with a block of colour naming each kind
-of change. Every build is on it, newest first, with the month it went out.
+of change. Every build is on it, newest first, with the day it went out.
 The next one goes over the newest before it ships, under its number alone, and
 its notes are the App Store's What's New. Only what has been merged goes on it,
 a line each in plain words: nothing still being worked on, and nothing about
