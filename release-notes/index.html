@@ -2,110 +2,119 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Release notes · Infomercial</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Infomercial &middot; Release notes</title>
 <meta name="description" content="What's changed in Infomercial, build by build.">
 <meta name="theme-color" content="#FBFAF5">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; base-uri 'none'; form-action 'none'">
-<meta name="referrer" content="no-referrer">
-<link rel="icon" href="../favicon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="../apple-touch-icon.png">
 <link rel="canonical" href="https://infomercial.nyc/release-notes/">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://infomercial.nyc/release-notes/">
 <meta property="og:site_name" content="Infomercial">
-<meta property="og:title" content="Release notes · Infomercial">
+<meta property="og:title" content="Infomercial · Release notes">
 <meta property="og:description" content="What's changed in Infomercial, build by build.">
 <meta property="og:image" content="https://infomercial.nyc/preview.png?v=2">
 <meta name="twitter:card" content="summary_large_image">
-<!-- The ?v= goes up whenever the file changes, so a browser never pairs this
-     page with a copy it kept from before. -->
-<link rel="stylesheet" href="notes.css?v=8">
+<!-- Set like Support, Terms and Privacy, with two things of its own: a
+     heading for each build, and a block of colour naming each kind of
+     change, in the set's lettering. -->
+<style>
+  @font-face { font-family: "VT323"; src: url("../fonts/VT323-Regular.ttf") format("truetype"); font-display: swap; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { background: #FBFAF5; color: #0E1440;
+         font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+         max-width: 620px; margin: 0 auto; padding: 48px 20px; line-height: 1.55; }
+  h1 { color: #1B33D6; font-size: 34px; line-height: 1.1; margin: 0 0 4px; }
+  h1 + .quiet { border-bottom: 2px solid #1B33D6; margin: 0 0 24px; padding-bottom: 14px; }
+  ul { list-style: square; padding-left: 20px; margin: 8px 0 0; }
+  li { margin: 6px 0; }
+  li::marker { color: var(--stock, #1B33D6); }
+  .quiet { color: rgba(14, 20, 64, 0.62); font-size: 13px; }
+  a { color: #1B33D6; }
+  hr { border: 0; border-top: 1px solid rgba(27, 51, 214, 0.22); margin: 36px 0 20px; }
+  h1 { position: relative; }
+  .back { position: absolute; right: 100%; top: calc(50% - 1px); transform: translateY(-50%);
+          display: flex; align-items: center; justify-content: flex-end; box-sizing: border-box;
+          width: 40px; height: 44px; padding-right: 11px; color: #1B33D6;
+          -webkit-tap-highlight-color: transparent; }
+  @media (max-width: 691px) { body { padding-left: 36px; } }
+  .back svg { width: 11px; height: 20px; overflow: visible; fill: none; stroke: currentColor;
+              stroke-width: 2.8; stroke-linecap: square; }
+  .back:hover, .back:active { background: #1B33D6; color: #fff; }
+  .back:focus-visible { outline: 2px solid #1B33D6; outline-offset: 3px; }
+
+  /* A build: its number in the blue, and the month it went out beside it. */
+  h2 { color: #1B33D6; font-size: 24px; line-height: 1.2; margin: 40px 0 0; }
+  h1 + .quiet + h2 { margin-top: 0; }
+  h2 .when { margin-left: 8px; color: rgba(14, 20, 64, 0.62); font-size: 15px; font-weight: 400; }
+  h2 + p { margin: 8px 0 0; }
+
+  /* A kind of change: its name on a block of colour, a hairline to the far
+     end, and how many. Its squares down the list are the same colour. */
+  .new { --stock: #3DBE7B; } .tidier { --stock: #79C3F2; }
+  .faster { --stock: #FF8A3D; } .fixed { --stock: #F06CB0; }
+  h3 { display: flex; align-items: center; gap: 10px; margin: 22px 0 0;
+       font: 400 19px/1 "VT323", ui-monospace, monospace; letter-spacing: .04em; text-transform: uppercase; }
+  h2 + h3 { margin-top: 14px; }
+  h3 .tag { padding: 3px 8px 2px; background: var(--stock); color: #0E1440; }
+  h3 i { flex: 1; height: 1px; background: rgba(27, 51, 214, 0.22); }
+  h3 .count { color: #1B33D6; }
+</style>
 </head>
 <body>
+<h1><a class="back" href="../" aria-label="Back to the front page"><svg viewBox="0 0 12 22" aria-hidden="true"><polyline points="10,2 2,11 10,20"/></svg></a>Release notes</h1>
+<p class="quiet">Infomercial &middot; What's changed, build by build</p>
 
-<!-- The page opens the way a channel does in the app: a band of the test
-     card with its word across it, each letter the opposite colour of the
-     bar it crosses. The bug in the corner is the way back. -->
-<header class="band" id="band">
-  <h1 class="word" id="word">release notes<i class="base" aria-hidden="true"></i></h1>
-  <a class="bug" href="../" aria-label="Back to the front page"><svg viewBox="0 0 6 10" aria-hidden="true"><polyline points="5,1 1,5 5,9"/></svg>Infomercial</a>
-</header>
+<!-- The next build. When it ships, its month goes beside its number, a
+     build after it goes over it, and its notes are what the App Store's
+     What's New says. Only what has been merged goes here, a line each in
+     plain words: nothing still being worked on, and nothing about how it
+     was built. -->
+<h2>1.1.0</h2>
 
-<main class="page">
-  <!-- The next build, which is not on the App Store yet. When it ships,
-       its month goes beside its number, a section for the build after goes
-       over it, and its notes are what the App Store's What's New says.
-       Only what has been merged goes here, a line each in plain words:
-       nothing still being worked on, and nothing about how it was built. -->
-  <section class="build" aria-labelledby="next">
-    <div class="heading">
-      <h2 id="next"><span>1.1.0</span></h2>
-    </div>
+<section class="new">
+  <h3><span class="tag">New</span><i aria-hidden="true"></i><span class="count" aria-label="6 changes">6</span></h3>
+  <ul>
+    <li>Find friends from your contacts</li>
+    <li>Tag shows with # in posts and replies</li>
+    <li>Skip seasons you didn't watch</li>
+    <li>Take a show off Watching now</li>
+    <li>Scroll further back through On Air</li>
+    <li>The streak icons got their own art</li>
+  </ul>
+</section>
 
-    <section class="group new" aria-labelledby="new">
-      <h3 class="sub" id="new"><span class="tag">New</span><i aria-hidden="true"></i><span class="count" aria-label="6 changes">6</span></h3>
-      <ul class="notes">
-        <li>Find friends from your contacts</li>
-        <li>Tag shows with # in posts and replies</li>
-        <li>Skip seasons you didn't watch</li>
-        <li>Take a show off Watching now</li>
-        <li>Scroll further back through On Air</li>
-        <li>The streak icons got their own art</li>
-      </ul>
-    </section>
+<section class="tidier">
+  <h3><span class="tag">Tidier</span><i aria-hidden="true"></i><span class="count" aria-label="3 changes">3</span></h3>
+  <ul>
+    <li>Setup is half as long</li>
+    <li>A cleaner You page and menu</li>
+    <li>The phone-in goes full width</li>
+  </ul>
+</section>
 
-    <section class="group tidier" aria-labelledby="tidier">
-      <h3 class="sub" id="tidier"><span class="tag">Tidier</span><i aria-hidden="true"></i><span class="count" aria-label="3 changes">3</span></h3>
-      <ul class="notes">
-        <li>Setup is half as long</li>
-        <li>A cleaner You page and menu</li>
-        <li>The phone-in goes full width</li>
-      </ul>
-    </section>
+<section class="faster">
+  <h3><span class="tag">Faster</span><i aria-hidden="true"></i><span class="count" aria-label="4 changes">4</span></h3>
+  <ul>
+    <li>Pretty much everything got faster</li>
+    <li>Changing channel is instant</li>
+    <li>Smoother scrolling and typing</li>
+    <li>Quicker to open</li>
+  </ul>
+</section>
 
-    <section class="group faster" aria-labelledby="faster">
-      <h3 class="sub" id="faster"><span class="tag">Faster</span><i aria-hidden="true"></i><span class="count" aria-label="4 changes">4</span></h3>
-      <ul class="notes">
-        <li>Pretty much everything got faster</li>
-        <li>Changing channel is instant</li>
-        <li>Smoother scrolling and typing</li>
-        <li>Quicker to open</li>
-      </ul>
-    </section>
+<section class="fixed">
+  <h3><span class="tag">Fixed</span><i aria-hidden="true"></i><span class="count" aria-label="3 changes">3</span></h3>
+  <ul>
+    <li>Phone-in likes don't crash the app</li>
+    <li>Likes stick on a patchy connection</li>
+    <li>Lots of little ones</li>
+  </ul>
+</section>
 
-    <section class="group fixed" aria-labelledby="fixed">
-      <h3 class="sub" id="fixed"><span class="tag">Fixed</span><i aria-hidden="true"></i><span class="count" aria-label="3 changes">3</span></h3>
-      <ul class="notes">
-        <li>Phone-in likes don't crash the app</li>
-        <li>Likes stick on a patchy connection</li>
-        <li>Lots of little ones</li>
-      </ul>
-    </section>
-  </section>
+<h2>1.0.0<span class="when">October 2026</span></h2>
+<p>Our original release.</p>
 
-  <!-- Every build that has been on the App Store, newest first. -->
-  <section class="build" aria-labelledby="v1-0-0">
-    <div class="heading">
-      <h2 id="v1-0-0"><span>1.0.0</span></h2>
-      <p class="index">Oct 2026</p>
-    </div>
-    <ul class="notes">
-      <li>Our original release</li>
-    </ul>
-  </section>
-</main>
-
-<!-- The small print, as the front page has it: these notes, a rule, and
-     the three pages about the app. This page is picked. -->
-<nav class="foot" aria-label="The small print">
-  <a href="./" aria-current="page">Release notes</a>
-  <i class="sep" aria-hidden="true"></i>
-  <a href="../support/">Support</a>
-  <a href="../privacy/">Privacy</a>
-  <a href="../terms/">Terms</a>
-</nav>
-
-<script src="notes.js?v=1"></script>
+<hr>
+<p class="quiet"><a href="../support/">Support</a> &middot; <a href="../privacy/">Privacy Policy</a> &middot; <a href="../terms/">Terms</a></p>
 </body>
 </html>

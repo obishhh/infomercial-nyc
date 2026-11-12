@@ -23,12 +23,12 @@ margin left of each title, back to the front page, and the address to write
 to, which here is desk@infomercial.nyc.
 
 `release-notes/` is what has changed in the app, build by build, at
-`infomercial.nyc/release-notes`, linked from the foot of the front page. It
-has a sheet and a script of its own (`notes.css`, and `notes.js`, which fits
-the word across the band). The first section is what is merged for the next
-build and not on the App Store yet; when that build ships, its month goes
-beside its number, a section for the build after goes over it, and its notes are the App Store's What's New. Only what has been
-merged goes on it, in plain words: nothing still being worked on, and nothing
+`infomercial.nyc/release-notes`, linked from the foot of the front page. It is
+set like Support, Terms and Privacy, with a block of colour naming each kind
+of change. The first build on it is what is merged for the next one; when that
+build ships, its month goes beside its number, a build after it goes over it,
+and its notes are the App Store's What's New. Only what has been merged goes on
+it, a line each in plain words: nothing still being worked on, and nothing
 about how it was built.
 
 © 2026 Owen Bishop. All rights reserved. The fonts in `fonts/` are not ours:
