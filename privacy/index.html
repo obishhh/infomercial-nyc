@@ -59,8 +59,9 @@
       photo if you add one. The photo is stored small and in greys.</li>
   <li><strong>What you write</strong>: reviews and the pips on them, rankings of a
       show's characters, replies, answers to the daily phone-in, calls and your
-      verdicts on other people's, and the likes you give. A review or a reply is
-      kept with the place in the show it was written from.</li>
+      verdicts on other people's, the likes you give, and the tomatoes you throw. A
+      review or a reply is kept with the place in the show it was written from, and a
+      tomato with the day it was thrown, because you get one a day.</li>
   <li><strong>What you rate</strong>: your pips for a show or a season.</li>
   <li><strong>Your phone number</strong>, if you give one: so that people who already
       have it in their contacts can find you here. It is optional, it is never
@@ -142,8 +143,13 @@ have for you. Numbers are not checked by a text message yet, so if two accounts 
 the same number, both are found by it.</p>
 <p>Your photo's file can be fetched by anybody who has its exact address. The app gives
 that address only to people who can already see your handle.</p>
+<p>A like or a tomato is counted on the post or the phone-in answer it is on, and anybody
+who can read that can open the count to see who gave it. Your handle is in that list
+for people who can already see your handle. To anybody else you are one of the count,
+and are not named.</p>
 <p>Blocking somebody hides what each of you writes from the other, and they are not
-told.</p>
+told. Neither of you is named to the other in a list of who liked something or threw a
+tomato at it.</p>
 <p>Those rules are enforced by the database itself through row-level security, not by
 the app asking nicely. A bug in the app cannot leak where you are.</p>
 
@@ -158,7 +164,7 @@ they are never told who you are.</p>
 <h3>How long we keep it</h3>
 <p>For as long as you have an account, and no longer.</p>
 <ul>
-  <li><strong>What you take back is deleted, not hidden</strong>: a like, a friend, a
+  <li><strong>What you take back is deleted, not hidden</strong>: a like, a tomato, a friend, a
       block, a photo you replace or take down. A copy of a photo that somebody's phone
       or the network that delivers pictures had already fetched can outlast the
       file.</li>
@@ -180,7 +186,7 @@ they are never told who you are.</p>
 
 <h3>Deleting something you posted</h3>
 <p>Hold a post or a reply of yours down, then Delete. It asks once. A post goes with its
-replies and its likes, and with the rating its pips gave. A reply somebody has answered
+replies, its likes and any tomatoes thrown at it, and with the rating its pips gave. A reply somebody has answered
 leaves the word "deleted" where it was, with none of your words and without your name,
 so the answers under it still make sense. A reply nobody answered just goes. A tier
 list and a phone-in answer cannot be deleted by themselves: deleting your account takes
