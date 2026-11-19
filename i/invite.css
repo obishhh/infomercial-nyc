@@ -1,0 +1,66 @@
+/* An invitation: the icon, what it is, one loud key and a quiet one, in the
+   app's own faces and colours, on the paper. */
+
+@font-face { font-family: "League Gothic"; src: url("/fonts/LeagueGothic.ttf") format("truetype"); font-display: swap; }
+@font-face { font-family: "Libre Caslon Text"; font-style: italic; src: url("/fonts/LibreCaslonText-Italic.ttf") format("truetype"); font-display: swap; }
+
+:root { color-scheme: light; --paper: #FBFAF5; --blue: #1B33D6; --yellow: #FFD92E; --ink: #0E1440; --soft: rgba(14, 20, 64, .62); }
+
+* { box-sizing: border-box; }
+html, body { margin: 0; background: var(--paper); }
+body {
+  min-height: 100dvh; display: flex; flex-direction: column; justify-content: center;
+  padding: 40px 20px calc(24px + env(safe-area-inset-bottom));
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+}
+main { display: flex; flex-direction: column; align-items: flex-start; gap: 16px; max-width: 420px; width: 100%; margin: 0 auto; }
+
+.icon { width: 88px; height: 88px; display: block; margin-bottom: 8px; }
+
+/* The station: the title face, tall and in capitals. */
+h1 { margin: 0; font: 400 64px/0.9 "League Gothic", "Helvetica Neue", sans-serif; text-transform: uppercase; color: var(--blue); }
+
+
+/* The keys: one size, square, as wide as the column, the word in the
+   middle. The one to press now is loud, the blue plate with the yellow
+   bold italic; the other is an outline. Copying moves the loud one on. */
+.key {
+  display: flex; align-items: center; justify-content: center; width: 100%; height: 52px; padding: 0 16px;
+  border: 2px solid var(--blue); border-radius: 0; text-decoration: none; cursor: pointer;
+  font: 700 17px/1 "Helvetica Neue", Helvetica, Arial, sans-serif;
+  -webkit-appearance: none; appearance: none; -webkit-tap-highlight-color: transparent;
+}
+.key.loud { background: var(--blue); color: var(--yellow); font-style: italic; }
+.key.plain { background: var(--paper); color: var(--blue); }
+.key:active { background: var(--blue); color: #fff; }
+.key.loud:active { background: var(--yellow); color: var(--blue); }
+
+.small { margin: 0; max-width: 34em; font-size: 14px; line-height: 1.4; color: var(--soft); }
+.small b { color: var(--blue); }
+.small[hidden] { display: none; }
+
+footer { display: flex; gap: 20px; justify-content: center; margin-top: 48px; }
+footer a { color: var(--blue); font-size: 13px; text-decoration: none; }
+a:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
+
+/* The three steps: a number in the first column, what to do from the
+   second, as a page is set. */
+.steps { list-style: none; margin: 8px 0 0; padding: 0; display: flex; flex-direction: column; gap: 20px; width: 100%; }
+.steps[hidden] { display: none; }
+.steps li { display: grid; grid-template-columns: 28px minmax(0, 320px); gap: 12px; align-items: start; }
+.steps .n { font: 400 28px/1 "League Gothic", "Helvetica Neue", sans-serif; color: var(--blue); padding-top: 12px; }
+.steps .small { margin-top: 8px; }
+/* What to do once the app is in: a row the keys' height, said at their
+   size, the key it names in bold. Not drawn as a key: on this page it
+   looked like one to press, and it is not. */
+.steps .say {
+  margin: 0; min-height: 52px; display: flex; align-items: center;
+  font-size: 17px; line-height: 1.35; color: var(--ink);
+}
+.steps .say b { color: var(--blue); white-space: nowrap; }
+
+a.get-only { max-width: 320px; }
+a.get-only[hidden] { display: none; }
+#have a { color: var(--blue); font-weight: 700; text-decoration: none; }
+#have[hidden] { display: none; }

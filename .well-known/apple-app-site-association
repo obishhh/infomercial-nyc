@@ -1,0 +1,13 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["HR9V5GZC5N.com.rabbitears.app"],
+        "components": [
+          { "/": "/i", "?": { "c": "????????" }, "comment": "An invitation: opens the app where it is installed." },
+          { "/": "/i/", "?": { "c": "????????" } }
+        ]
+      }
+    ]
+  }
+}

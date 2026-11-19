@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>You're invited · Infomercial</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#FBFAF5">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<!-- An invitation. Where the app is installed the link never reaches this
+     page: it opens the app (the domain's apple-app-site-association). Here,
+     it is somebody without it, so the page says the three things to do, in
+     order. Getting the app is last, because pressing it leaves the page: what
+     to do once it is installed has to be read before that. -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Infomercial">
+<meta property="og:title" content="You're invited to Infomercial">
+<meta property="og:description" content="Talk about what you're watching without spoiling it.">
+<meta property="og:image" content="https://infomercial.nyc/preview.png?v=2">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="stylesheet" href="/i/invite.css?v=10">
+<script src="/i/invite.js?v=9" defer></script>
+</head>
+<body>
+<main>
+  <img class="icon" src="/apple-touch-icon.png" alt="" width="88" height="88">
+  <h1>You're invited</h1>
+  <ol class="steps" id="steps">
+    <li>
+      <span class="n">1</span>
+      <div><button class="key loud" id="copy" type="button">Tap to copy your invite</button>
+        <p class="small" id="copied" hidden></p></div>
+    </li>
+    <li>
+      <span class="n">2</span>
+      <p class="say"><span>Once installed (step 3), press <b>Paste invite</b> in the app.</span></p>
+    </li>
+    <li>
+      <span class="n">3</span>
+      <div><a class="key plain" id="get" href="https://apps.apple.com/app/id6814215735">Get Infomercial</a></div>
+    </li>
+  </ol>
+
+  <a class="key loud get-only" id="getonly" href="https://apps.apple.com/app/id6814215735" hidden>Get Infomercial</a>
+  <p class="small" id="have" hidden>Already have it? <a id="open" href="infomercial://i">Open the app</a></p>
+</main>
+<footer><a href="/support/">Support</a><a href="/privacy/">Privacy</a></footer>
+</body>
+</html>
