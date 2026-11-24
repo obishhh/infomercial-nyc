@@ -66,9 +66,11 @@
      question on Support, a box on the paper, square, at a size a phone types
      in without zooming, and a key inverted while it is down. */
   label { display: block; margin: 0 0 8px; color: #1B33D6; font-size: 18px; font-weight: 700; line-height: 1.25; }
-  /* Two lines to start with, and it grows a line at a time as it is
-     typed in (request.js), up to half the screen, past which it scrolls. */
-  textarea { display: block; box-sizing: border-box; width: 100%; max-height: 50vh; margin: 0; padding: 10px 12px;
+  /* One line to start with, and it grows a line at a time as it is
+     typed in (request.js), up to half the screen, past which it scrolls.
+     Room is kept at its far end for the key that sends. */
+  .box { position: relative; }
+  textarea { display: block; box-sizing: border-box; width: 100%; max-height: 50vh; margin: 0; padding: 10px 52px 10px 12px;
              border: 2px solid #1B33D6; border-radius: 0; background: #fff; color: #0E1440; resize: none; overflow-y: hidden;
              font: 16px/1.45 'Helvetica Neue', Helvetica, Arial, sans-serif; -webkit-appearance: none; appearance: none; }
   textarea:focus { outline: 2px solid #1B33D6; outline-offset: 2px; }
@@ -76,15 +78,31 @@
   /* A field a person never sees. Something filling every box in fills it,
      and nothing is sent. */
   .trap { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
-  .send { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; margin-top: 12px; }
-  button { height: 44px; padding: 0 22px; border: 2px solid #1B33D6; border-radius: 0;
-           background: #FBFAF5; color: #1B33D6; font: 700 15px/1 'Helvetica Neue', Helvetica, Arial, sans-serif;
-           cursor: pointer; -webkit-appearance: none; appearance: none; -webkit-tap-highlight-color: transparent; }
-  button:active { background: #1B33D6; color: #fff; }
-  @media (hover: hover) { button:hover { background: #1B33D6; color: #fff; } }
-  button:focus-visible { outline: 2px solid #1B33D6; outline-offset: 3px; }
-  button:disabled { opacity: .5; cursor: default; background: #FBFAF5; color: #1B33D6; }
-  .said { margin: 0; font-size: 15px; }
+  /* The app's send key, in the box's bottom corner: a disc of 30 in a full
+     touch, an arrow in the set's squares. Waiting is the outline; with
+     something typed it is the loud key, the blue with the yellow arrow.
+     Either inverts while it is down. Sending, the arrow gives way to the
+     stand-by blocks. */
+  .key { position: absolute; right: 2px; bottom: 2px; width: 44px; height: 44px; padding: 0; margin: 0;
+         display: flex; align-items: center; justify-content: center; border: 0; background: none;
+         cursor: pointer; -webkit-appearance: none; appearance: none; -webkit-tap-highlight-color: transparent; }
+  .key .face { display: flex; align-items: center; justify-content: center; box-sizing: border-box;
+               width: 30px; height: 30px; border-radius: 50%; border: 1.5px solid #1B33D6; background: #fff; color: #1B33D6; }
+  .key.ready .face { background: #1B33D6; color: #FFD92E; }
+  .key:active .face { background: #1B33D6; color: #fff; }
+  .key.ready:active .face { background: #FFD92E; color: #1B33D6; }
+  @media (hover: hover) { .key:hover .face { background: #1B33D6; color: #fff; }
+                          .key.ready:hover .face { background: #FFD92E; color: #1B33D6; } }
+  .key:focus-visible { outline: none; }
+  .key:focus-visible .face { outline: 2px solid #1B33D6; outline-offset: 2px; }
+  .key svg { display: block; width: 14px; height: 18px; fill: currentColor; }
+  .key .blocks { display: none; gap: 2px; }
+  .key .blocks i { width: 4px; height: 4px; background: currentColor; }
+  .key.busy { cursor: default; }
+  .key.busy svg { display: none; }
+  .key.busy .blocks { display: flex; }
+  .said:empty { display: none; }
+  .said { margin: 10px 0 0; font-size: 15px; }
   .said.fault { color: #D92027; }
 
   /* The small print, as the front page has it: the release notes, a
@@ -106,15 +124,15 @@
      request.js; it is read on that project's dashboard. -->
 <form id="request" novalidate>
   <label for="words">Request a feature</label>
-  <textarea id="words" name="words" rows="2" maxlength="1000" placeholder="Make it do the thing."></textarea>
+  <div class="box">
+    <textarea id="words" name="words" rows="1" maxlength="1000" placeholder="Make it do the thing."></textarea>
+    <button class="key" id="send" type="submit" aria-label="Send"><span class="face"><svg viewBox="0 0 14 18" aria-hidden="true"><rect x="6" y="0" width="2" height="2"/><rect x="4" y="2" width="2" height="2"/><rect x="6" y="2" width="2" height="2"/><rect x="8" y="2" width="2" height="2"/><rect x="2" y="4" width="2" height="2"/><rect x="6" y="4" width="2" height="2"/><rect x="10" y="4" width="2" height="2"/><rect x="0" y="6" width="2" height="2"/><rect x="6" y="6" width="2" height="2"/><rect x="12" y="6" width="2" height="2"/><rect x="6" y="8" width="2" height="2"/><rect x="6" y="10" width="2" height="2"/><rect x="6" y="12" width="2" height="2"/><rect x="6" y="14" width="2" height="2"/><rect x="6" y="16" width="2" height="2"/></svg><span class="blocks" aria-hidden="true"><i></i><i></i><i></i></span></span></button>
+  </div>
   <div class="trap" aria-hidden="true">
     <label for="website">Leave this empty</label>
     <input id="website" name="website" type="text" tabindex="-1" autocomplete="off">
   </div>
-  <div class="send">
-    <button id="send" type="submit">Send</button>
-    <p class="said" id="said" role="status" aria-live="polite"></p>
-  </div>
+  <p class="said" id="said" role="status" aria-live="polite"></p>
   <noscript><p class="said fault">This needs JavaScript. Or email
   <a href="mailto:desk@infomercial.nyc">desk@infomercial.nyc</a>.</p></noscript>
 </form>
@@ -335,6 +353,6 @@
 <hr>
 <p class="quiet foot"><a href="../support/">Support</a><a href="../privacy/">Privacy Policy</a><a href="../terms/">Terms</a></p>
 
-<script src="request.js?v=2"></script>
+<script src="request.js?v=3"></script>
 </body>
 </html>

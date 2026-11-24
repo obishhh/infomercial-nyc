@@ -21,7 +21,12 @@
     said.className = fault ? "said fault" : "said";
   }
 
-  // The box is as tall as what is in it, two lines at the least, and
+  // The key is the loud one once there is something to send.
+  function lit() {
+    key.classList.toggle("ready", words.value.trim().length > 0);
+  }
+
+  // The box is as tall as what is in it, one line at the least, and
   // scrolls once it reaches the most its style allows.
   function fit() {
     words.style.height = "auto";
@@ -35,12 +40,14 @@
   function sent() {
     words.value = "";
     fit();
+    lit();
     say("Sent. Thanks for the idea.");
   }
 
   // Typing grows the box, and clears what the last press said.
   words.addEventListener("input", function () {
     fit();
+    lit();
     if (said.textContent) say("");
   });
   window.addEventListener("resize", fit);
@@ -60,8 +67,8 @@
     }
 
     sending = true;
-    key.disabled = true;
-    key.textContent = "Sending";
+    key.classList.add("busy");
+    key.setAttribute("aria-label", "Sending");
     say("");
 
     fetch(ENDPOINT, {
@@ -81,8 +88,8 @@
       })
       .then(function () {
         sending = false;
-        key.disabled = false;
-        key.textContent = "Send";
+        key.classList.remove("busy");
+        key.setAttribute("aria-label", "Send");
       });
   });
 })();
