@@ -123,9 +123,8 @@
 <!-- Ask for something. What is typed goes to the website's own database by
      request.js; it is read on that project's dashboard. -->
 <form id="request" novalidate>
-  <label for="words">Request a feature</label>
   <div class="box">
-    <textarea id="words" name="words" rows="1" maxlength="1000" placeholder="Make it do the thing."></textarea>
+    <textarea id="words" name="words" rows="1" maxlength="1000" aria-label="Request a feature" placeholder="Type here to request a feature"></textarea>
     <button class="key" id="send" type="submit" aria-label="Send"><span class="face"><svg viewBox="0 0 14 18" aria-hidden="true"><rect x="6" y="0" width="2" height="2"/><rect x="4" y="2" width="2" height="2"/><rect x="6" y="2" width="2" height="2"/><rect x="8" y="2" width="2" height="2"/><rect x="2" y="4" width="2" height="2"/><rect x="6" y="4" width="2" height="2"/><rect x="10" y="4" width="2" height="2"/><rect x="0" y="6" width="2" height="2"/><rect x="6" y="6" width="2" height="2"/><rect x="12" y="6" width="2" height="2"/><rect x="6" y="8" width="2" height="2"/><rect x="6" y="10" width="2" height="2"/><rect x="6" y="12" width="2" height="2"/><rect x="6" y="14" width="2" height="2"/><rect x="6" y="16" width="2" height="2"/></svg><span class="blocks" aria-hidden="true"><i></i><i></i><i></i></span></span></button>
   </div>
   <div class="trap" aria-hidden="true">
