@@ -163,14 +163,31 @@ h1, p { margin: 0; }
    its green. */
 .store .now { font-size: var(--say); text-shadow: .07em .07em 0 var(--green); }
 .store .badge { display: block; width: auto; height: var(--badge); }
-/* The arrow, in a mark's red, standing just past the tile's far end and
-   pointing back at the badge. It is part of the link, so a press on it
-   goes to the App Store too. */
+/* The arrow, in a mark's red, standing just past the badge and pointing
+   back at the middle of it. It is part of the link, so a press on it goes
+   to the App Store too. It draws itself on once, a moment after the page
+   opens, and then every few seconds gives the badge a little poke. */
 .store .pitch { position: relative; }
-.store .nudge { position: absolute; left: calc(50% + var(--badge) * 1.5 + 6px); bottom: calc(var(--badge) * -.1); width: var(--nudge, 84px); height: auto; overflow: visible;
-                fill: none; stroke: var(--red); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; pointer-events: none; }
+.store .nudge { --nudge: 84px; position: absolute; width: var(--nudge); height: auto; overflow: visible;
+                left: calc(50% + var(--badge) * 1.5 + 4px);
+                /* Its tip, 14 of its 60 up, level with the badge's middle. */
+                bottom: calc(var(--badge) * .5 - var(--nudge) / 6);
+                fill: none; stroke: var(--red); stroke-width: 3.5; stroke-linecap: round; stroke-linejoin: round; pointer-events: none; }
+.store .nudge path { stroke-dasharray: 1; stroke-dashoffset: 0; }
+@media (prefers-reduced-motion: no-preference) {
+  .store .nudge .shaft { stroke-dashoffset: 1; animation: draw .45s ease-out .5s forwards; }
+  .store .nudge .head { stroke-dashoffset: 1; animation: draw .15s ease-out .95s forwards; }
+  .store .nudge { animation: poke 3.5s ease-in-out 1.6s infinite; }
+}
+@keyframes draw { to { stroke-dashoffset: 0; } }
+@keyframes poke {
+  0%, 70%, 100% { transform: translateX(0); }
+  78% { transform: translateX(-6px); }
+  86% { transform: translateX(0); }
+  92% { transform: translateX(-4px); }
+}
 /* On a phone it is drawn smaller, to stay inside the screen. */
-@media (max-width: 599px) { .store .nudge { --nudge: 62px; left: calc(50% + var(--badge) * 1.5 + 4px); } }
+@media (max-width: 599px) { .store .nudge { --nudge: 62px; } }
 @media (max-width: 359px) { .store .nudge { --nudge: 44px; } }
 /* Down, the paper inside it takes a wash of the blue. */
 .store:active { background-color: rgba(27, 51, 214, .07); }
