@@ -173,13 +173,16 @@ h1, p { margin: 0; }
                 /* Its tip, 14 of its 60 up, level with the badge's middle. */
                 bottom: calc(var(--badge) * .5 - var(--nudge) / 6);
                 fill: none; stroke: var(--red); stroke-width: 3.5; stroke-linecap: round; stroke-linejoin: round; pointer-events: none; }
-.store .nudge path { stroke-dasharray: 1; stroke-dashoffset: 0; }
+/* A gap twice the line's length, so nothing of the next dash's round end
+   shows at the tip before the line gets there, and the line hidden until
+   it starts to draw. */
+.store .nudge path { stroke-dasharray: 1 2; stroke-dashoffset: 0; }
 @media (prefers-reduced-motion: no-preference) {
-  .store .nudge .shaft { stroke-dashoffset: 1; animation: draw .45s ease-out .5s forwards; }
-  .store .nudge .head { stroke-dashoffset: 1; animation: draw .15s ease-out .95s forwards; }
+  .store .nudge .shaft { stroke-dashoffset: 1; opacity: 0; animation: draw .45s ease-out .5s forwards; }
+  .store .nudge .head { stroke-dashoffset: 1; opacity: 0; animation: draw .15s ease-out .95s forwards; }
   .store .nudge { animation: poke 3.5s ease-in-out 1.6s infinite; }
 }
-@keyframes draw { to { stroke-dashoffset: 0; } }
+@keyframes draw { from { opacity: 1; stroke-dashoffset: 1; } to { opacity: 1; stroke-dashoffset: 0; } }
 @keyframes poke {
   0%, 70%, 100% { transform: translateX(0); }
   78% { transform: translateX(-6px); }
