@@ -163,6 +163,15 @@ h1, p { margin: 0; }
    its green. */
 .store .now { font-size: var(--say); text-shadow: .07em .07em 0 var(--green); }
 .store .badge { display: block; width: auto; height: var(--badge); }
+/* The arrow, in a mark's red, standing just past the tile's far end and
+   pointing back at the badge. It is part of the link, so a press on it
+   goes to the App Store too. */
+.store .pitch { position: relative; }
+.store .nudge { position: absolute; left: calc(50% + var(--badge) * 1.5 + 6px); bottom: calc(var(--badge) * -.1); width: var(--nudge, 84px); height: auto; overflow: visible;
+                fill: none; stroke: var(--red); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; pointer-events: none; }
+/* On a phone it is drawn smaller, to stay inside the screen. */
+@media (max-width: 599px) { .store .nudge { --nudge: 62px; left: calc(50% + var(--badge) * 1.5 + 4px); } }
+@media (max-width: 359px) { .store .nudge { --nudge: 44px; } }
 /* Down, the paper inside it takes a wash of the blue. */
 .store:active { background-color: rgba(27, 51, 214, .07); }
 @media (hover: hover) { .store:hover { background-color: rgba(27, 51, 214, .07); } }

@@ -32,7 +32,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <!-- The ?v= on the sheet and the scripts goes up whenever that file changes,
      so a browser never pairs this page with a copy it kept from before. -->
-<link rel="stylesheet" href="site.css?v=18">
+<link rel="stylesheet" href="site.css?v=19">
 </head>
 <body>
 
@@ -95,6 +95,9 @@
       <span class="pitch">
         <span class="osd now">Available now</span>
         <img class="badge" src="app-store.svg" width="120" height="40" alt="">
+        <!-- A crayon arrow, the hand of the app's own marks, sweeping in from
+             beside the tile to point at the badge. -->
+        <svg class="nudge" viewBox="0 0 84 72" aria-hidden="true"><defs><filter id="crayon" x="-15%" y="-15%" width="130%" height="130%"><feTurbulence type="fractalNoise" baseFrequency="0.11" numOctaves="2" seed="7" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="1.6"/></filter></defs><g filter="url(#crayon)"><path d="M74 6 C70 34 46 51 10 55"/><path d="M21 45 L9 55 L22 63"/></g></svg>
       </span>
     </a>
   </div>
